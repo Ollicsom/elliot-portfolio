@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+
+$colorPrimary: #9CAA9C;
+$colorPrimaryFade: #BDCFBD;
+$colorPrimaryLight: #CEDFCE;
+$colorSecondaryLight: #EFEFDE;
+$colorSecondary: #BD9A52;
+
+*, body{
+    background-color: $colorPrimaryLight;
+}
