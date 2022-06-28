@@ -1,0 +1,7 @@
+@use '../../styles.scss' as variables;
+
+#test{
+    height: 150vh;
+    margin: variables.$paddingWidth;
+    margin-top: 15vh;
+}

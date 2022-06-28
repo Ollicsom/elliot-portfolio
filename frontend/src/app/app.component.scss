@@ -1,0 +1,81 @@
+@use '../styles.scss' as variables;
+
+*{
+    user-select: none;
+}
+
+.app-padding{
+    background-color: variables.$colorSecondaryLight;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#app-header{
+    width: 100vw;
+    height: 10vh;
+    top: 0;
+    left: 0;
+}
+
+#app-padding-left, #app-padding-right{
+    height: 100vh;
+    width: variables.$paddingWidth;
+}
+#app-padding-left{
+    top: 0;
+    left: 0;
+}
+#app-padding-right{
+    top: 0;
+    right: 0;
+}
+
+h1{
+    font-family: 'Afterglow';
+    color: variables.$colorPrimary;
+    text-align: center;
+    letter-spacing: 0.3vw;
+    font-size: 3vh;
+    cursor: pointer;
+}
+
+#LanguageSelector{
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
+
+a{
+    cursor: pointer;
+    color: variables.$colorPrimary;
+}
+a:hover{
+    opacity: 0.7;
+}
+
+#menuMobile>span{
+    background-color: variables.$colorPrimary;
+    height: 2px;
+    width: 15px;
+    margin: 3px;
+    display: block;
+}
+
+#menuMobile{
+    position: absolute;
+    right: 5vw;
+}
+
+#menu{
+    position: absolute;
+    right: 9vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+
+#menu>img{
+    height: 10vh;
+}

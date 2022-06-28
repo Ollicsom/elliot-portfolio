@@ -1,4 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: "Afterglow";
+    src: url("./assets/fonts/Afterglow.ttf");
+}
+@font-face {
+    font-family: "Austria";
+    src: url("./assets/fonts/Austria.otf");
+}
+@font-face {
+    font-family: "BestValentina";
+    src: url("./assets/fonts/Best-Valentina.otf");
+}
 
 $colorPrimary: #9CAA9C;
 $colorPrimaryFade: #BDCFBD;
@@ -6,6 +18,14 @@ $colorPrimaryLight: #CEDFCE;
 $colorSecondaryLight: #EFEFDE;
 $colorSecondary: #BD9A52;
 
+$paddingWidth: 4vw;
+
 *, body{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body{
     background-color: $colorPrimaryLight;
 }

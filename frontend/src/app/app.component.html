@@ -1,1 +1,25 @@
+<div *ngIf="vw>640" class="app-padding" id="app-padding-left">
+    <p id="LanguageSelector">
+        <a (click)="changeLanguage('en')">English</a> · <a (click)="changeLanguage('fr')">Français</a> · <a (click)="changeLanguage('it')">Italiano</a> · <a (click)="changeLanguage('es')">Español</a>
+    </p>
+</div>
+
+<div *ngIf="vw>640" class="app-padding" id="app-padding-right">
+</div>
+
+<div class="app-padding" id="app-header">
+    <h1>ELLIOT MATHEY</h1>
+    <div (click)="switchMenuState()" *ngIf="vw>640;else menuMobile" id="menu">
+        <img src="../assets/medias/polaroid.png">
+        <p>Menu</p>
+    </div>
+    <ng-template #menuMobile>
+        <div (click)="switchMenuState()" id="menuMobile">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </ng-template>
+</div>
+
 <router-outlet></router-outlet>
