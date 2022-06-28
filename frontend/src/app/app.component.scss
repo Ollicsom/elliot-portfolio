@@ -17,7 +17,6 @@
     height: variables.$paddingWidth;
     top: 0;
     left: 0;
-    box-shadow: 1px 0px 15px black;
 }
 
 #app-padding-left, #app-padding-right{
@@ -130,3 +129,33 @@ a:hover{
 p{
     overflow: hidden;
 }
+
+#flash{
+    background-color: white;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    opacity: 0;
+    z-index: -1;
+}
+
+#flash.active{
+    animation-duration: 1.2s;
+    animation-name: flash-photo;
+}
+
+@keyframes flash-photo {
+    0% {
+        opacity: 0;
+        z-index: -1;
+    }
+    1% {
+        opacity: 1;
+        z-index: 99;
+    }
+  
+    100% {
+        opacity: 0;
+        z-index: -1;
+    }
+  }

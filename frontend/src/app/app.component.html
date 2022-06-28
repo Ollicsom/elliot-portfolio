@@ -33,5 +33,6 @@
 <div *ngIf="vw>640" class="app-padding" id="app-padding-right">
 </div>
 
+<div id="flash" [ngClass]="{'active' : isMenuOpened}"></div>
 
 <router-outlet></router-outlet>
