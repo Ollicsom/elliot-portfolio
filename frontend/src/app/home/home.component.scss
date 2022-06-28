@@ -3,5 +3,9 @@
 #test{
     height: 150vh;
     margin: variables.$paddingWidth;
-    margin-top: 15vh;
+    margin-top: variables.$paddingWidth;
+}
+
+#test>* {
+    margin: 35px;
 }

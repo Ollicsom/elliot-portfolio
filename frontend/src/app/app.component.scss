@@ -14,9 +14,10 @@
 
 #app-header{
     width: 100vw;
-    height: 10vh;
+    height: variables.$paddingWidth;
     top: 0;
     left: 0;
+    box-shadow: 1px 0px 15px black;
 }
 
 #app-padding-left, #app-padding-right{
@@ -78,4 +79,54 @@ a:hover{
 
 #menu>img{
     height: 10vh;
+}
+
+#openedMenu{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    top: 4vw;
+    right: 5vw;
+    height: 18vw;
+    width: 15vw;
+    background-color: variables.$nearWhite;
+    box-shadow: 1px 0px 15px black;
+    font-family: "BestValentina";
+    font-size: 2vw;
+    transform: translateY(-19vw);
+    transition-duration: 1.5s;
+}
+
+#openedMenu.active{
+    transform: translateY(0vw);
+}
+
+#openedMenu>div{
+    font-family: "BestValentina";
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: variables.$nearWhite;
+    background-color: variables.$nearBlack;
+    width: 13vw;
+    height: 14vw;
+    margin-top: 1vw;
+}
+
+#openedMenu>div>p{
+    margin-left: 10px;
+    opacity: 0;
+    transition-duration: 0.8s;
+    transition-delay: 1.5s;
+}
+
+#openedMenu.active>div>p{
+    opacity: 1;
+}
+
+p{
+    overflow: hidden;
 }

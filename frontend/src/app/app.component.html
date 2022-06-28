@@ -1,11 +1,13 @@
-<div *ngIf="vw>640" class="app-padding" id="app-padding-left">
-    <p id="LanguageSelector">
-        <a (click)="changeLanguage('en')">English</a> · <a (click)="changeLanguage('fr')">Français</a> · <a (click)="changeLanguage('it')">Italiano</a> · <a (click)="changeLanguage('es')">Español</a>
-    </p>
-</div>
-
-<div *ngIf="vw>640" class="app-padding" id="app-padding-right">
-</div>
+<ng-container *ngIf="vw>640">
+    <div [ngClass]="{'active': isMenuOpened }" id="openedMenu">
+        <div>
+            <p><a>{{ 'menu.home' | translate}}</a></p>
+            <p><a>{{ 'menu.gallery' | translate}}</a></p>
+            <p><a>{{ 'menu.shop' | translate}}</a></p>
+        </div>
+        <p>Menu</p>
+    </div>
+</ng-container>
 
 <div class="app-padding" id="app-header">
     <h1>ELLIOT MATHEY</h1>
@@ -21,5 +23,15 @@
         </div>
     </ng-template>
 </div>
+
+<div *ngIf="vw>640" class="app-padding" id="app-padding-left">
+    <p id="LanguageSelector">
+        <a (click)="changeLanguage('en')">English</a> · <a (click)="changeLanguage('fr')">Français</a> · <a (click)="changeLanguage('it')">Italiano</a> · <a (click)="changeLanguage('es')">Español</a>
+    </p>
+</div>
+
+<div *ngIf="vw>640" class="app-padding" id="app-padding-right">
+</div>
+
 
 <router-outlet></router-outlet>
