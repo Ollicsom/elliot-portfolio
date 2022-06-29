@@ -1,0 +1,22 @@
+#container{
+    height: 90vh;
+    display: flex;
+    align-items: center;
+}
+#polaroid-container{
+    transform: rotate(5deg);
+    background-color: white;
+    height: 45vh;
+    width: 35vh;
+    position: absolute;
+    left: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#polaroid-photo{
+    margin: 2.5vh;
+    background-color: black;
+    height: 35vh;
+    width: 30vh;
+}

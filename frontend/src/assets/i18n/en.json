@@ -6,6 +6,9 @@
         "gallery": "Gallery",
         "shop": "Shop"
     },
+    "home": {
+        "photograph": "PHOTOGRAPH"
+    },
     "main": {
         "translation" : "translation"
     }
