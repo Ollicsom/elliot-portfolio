@@ -1,6 +1,7 @@
 {
     "shared": {},
     "menu": {
+        "menu": "Menu",
         "home": "Accueil",
         "gallery": "Gallerie",
         "shop": "Boutique"

@@ -1,22 +1,30 @@
-<ng-container *ngIf="vw>640">
+<ng-container *ngIf="vw>640;else menuOpenedMobile">
     <div [ngClass]="{'active': isMenuOpened }" id="openedMenu">
         <div>
-            <p><a>{{ 'menu.home' | translate}}</a></p>
-            <p><a>{{ 'menu.gallery' | translate}}</a></p>
-            <p><a>{{ 'menu.shop' | translate}}</a></p>
+            <p><a href="/home">{{ 'menu.home' | translate}}</a></p>
+            <p><a href="/gallery">{{ 'menu.gallery' | translate}}</a></p>
+            <p><a href="/shop">{{ 'menu.shop' | translate}}</a></p>
         </div>
-        <p>Menu</p>
+        <p>{{ 'menu.menu' | translate }}</p>
     </div>
 </ng-container>
 
+<ng-template #menuOpenedMobile>
+    <div [ngClass]="{'active': isMenuOpened }" id="openedMenuMobile">
+        <p><a href="/home">{{ 'menu.home' | translate}}</a></p>
+        <p><a href="/gallery">{{ 'menu.gallery' | translate}}</a></p>
+        <p><a href="/shop">{{ 'menu.shop' | translate}}</a></p>
+    </div>
+</ng-template>
+
 <div class="app-padding" id="app-header">
-    <h1>ELLIOT MATHEY</h1>
+    <a href="/"><h1>ELLIOT MATHEY</h1></a>
     <div (click)="switchMenuState()" *ngIf="vw>640;else menuMobile" id="menu">
         <img src="../assets/medias/polaroid.png">
-        <p>Menu</p>
+        <p>{{ 'menu.menu' | translate }}</p>
     </div>
     <ng-template #menuMobile>
-        <div (click)="switchMenuState()" id="menuMobile">
+        <div (click)="switchMenuState()" id="menuMobile" [ngClass]="{'active': isMenuOpened}">
             <span></span>
             <span></span>
             <span></span>
@@ -33,6 +41,8 @@
 <div *ngIf="vw>640" class="app-padding" id="app-padding-right">
 </div>
 
-<div id="flash" [ngClass]="{'active' : isMenuOpened}"></div>
+<ng-container *ngIf="vw>640">
+    <div id="flash" [ngClass]="{'active' : isMenuOpened}"></div>
+</ng-container>
 
 <router-outlet></router-outlet>
