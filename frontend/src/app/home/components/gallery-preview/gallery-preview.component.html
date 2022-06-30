@@ -1,7 +1,16 @@
-<div id="container">
-    <div id="polaroid-container" [ngClass]="{'rotate-left': rotation, 'rotate-right': !rotation, 'position-left': position === 'left', 'position-right': position === 'right' }">
-        <div id="polaroid-photo"></div>
-        <p>Menu</p>
+<div id="container" [ngClass]="{'position-right': position === 'right' }">
+    <div id="photo-container">
+        <div id="polaroid-container" [ngClass]="{'rotate-left': rotation, 'rotate-right': !rotation }">
+            <div id="polaroid-photo" #photo>
+                <div id="ombre">
+    
+                </div>
+            </div>
+            <p>Costa Rica</p>
+        </div>
+    </div>
+    <div id="text-container">
+        <p>Wsh</p>
     </div>
 
 </div>

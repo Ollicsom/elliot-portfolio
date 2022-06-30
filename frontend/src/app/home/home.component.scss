@@ -11,7 +11,7 @@
 }
 #picture{
     width: 100vw;
-    height: 330vh;
+    height: 150vh;
     background-attachment: fixed;
     background-image: url('/assets/medias/picture.jpeg');
     background-position: 50% 35%;
@@ -26,7 +26,7 @@ h2{
     height: 55vh;
     width: 5vw;
     position: absolute;
-    box-shadow: 0px 0px 15px black;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.30);
     writing-mode: vertical-rl;
     text-orientation: upright;
     text-align: center;
@@ -49,11 +49,16 @@ h2:nth-child(2){
     background-color: variables.$colorPrimaryFade;
 }
 #test>div{
+    display: flex;
+    justify-content: end;
+    align-items: end;
     margin-top: 25vh;
     margin: 0;
     width: 25vw;
     height: 25vh;
     background-color: variables.$colorPrimaryLight;
+    color: variables.$colorSecondary;
+    font-size: 5vmin;
 }
 #test>div:nth-child(2){
     height: 75vh;
@@ -63,6 +68,7 @@ h2:nth-child(2){
 }
 #test>div:nth-child(4){
     height: 175vh;
+    padding-right: 5vw;
 }
 
 #content{

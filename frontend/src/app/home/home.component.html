@@ -1,16 +1,19 @@
 <div id="vest">
 </div>
 <div id="picture">
-    <h2 id="h2">ELLIOT MATHEY</h2>
-    <h2 id="h2">{{ 'home.photograph' | translate}}</h2>
+    <h2 id="h2" #fullname>ELLIOT MATHEY</h2>
+    <h2 id="h2" #job>{{ 'home.photograph' | translate}}</h2>
 </div>
 <div id="test">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+    <div>Observateur.</div>
+    <div>Patient.</div>
+    <div>Attentif.</div>
+    <div>Magnifique.</div>
 </div>
 <div id="content">
     <app-gallery-preview [index]="0"></app-gallery-preview>
     <app-gallery-preview [index]="1"></app-gallery-preview>
+    <app-gallery-preview [index]="2"></app-gallery-preview>
+    <app-gallery-preview [index]="3"></app-gallery-preview>
+    <app-gallery-preview [index]="4"></app-gallery-preview>
 </div>

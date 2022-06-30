@@ -4,13 +4,15 @@
     align-items: center;
 }
 #polaroid-container{
+    justify-self: center;
     background-color: white;
     height: 45vh;
     width: 35vh;
-    position: absolute;
+    // position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.10);
 }
 
 .rotate-left {
@@ -23,14 +25,39 @@
 
 #polaroid-photo{
     margin: 2.5vh;
-    background-color: black;
     height: 35vh;
     width: 30vh;
+    transition-duration: 0.5s;
+    background-image: url("../../../../assets/medias/CR-48.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 150%;
+    background-attachment: fixed;background-position-y: 50px;
+}
+#polaroid-photo:hover{
+    background-size: 170%;
 }
 
-.position-left{
-    left: 15%;
+#ombre{
+    height: 100%;
+    width: 100%;
+    box-shadow: inset 0px 0px 25px black;
 }
+
 .position-right{
-    right: 15%;
+    flex-direction: row-reverse;
+}
+
+#photo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 45%;
+}
+#text-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
