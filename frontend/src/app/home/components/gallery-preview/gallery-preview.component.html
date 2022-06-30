@@ -1,5 +1,5 @@
 <div id="container">
-    <div id="polaroid-container">
+    <div id="polaroid-container" [ngClass]="{'rotate-left': rotation, 'rotate-right': !rotation, 'position-left': position === 'left', 'position-right': position === 'right' }">
         <div id="polaroid-photo"></div>
         <p>Menu</p>
     </div>
