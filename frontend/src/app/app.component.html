@@ -1,5 +1,5 @@
 <ng-container *ngIf="vw>640;else menuOpenedMobile">
-    <div [ngClass]="{'active': isMenuOpened }" id="openedMenu">
+    <div [ngClass]="{'active': isMenuOpened }" id="openedMenu" (click)="clickInsideMenu()">
         <div>
             <p><a href="/home">{{ 'menu.home' | translate}}</a></p>
             <p><a href="/gallery">{{ 'menu.gallery' | translate}}</a></p>
@@ -8,6 +8,8 @@
         <p>{{ 'menu.menu' | translate }}</p>
     </div>
 </ng-container>
+
+<div id="menu-closer" *ngIf="vw>640 && isMenuOpened" (click)="switchMenuState()"></div>
 
 <ng-template #menuOpenedMobile>
     <div [ngClass]="{'active': isMenuOpened }" id="openedMenuMobile">

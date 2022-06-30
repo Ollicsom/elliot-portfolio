@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -11,6 +11,16 @@ export class AppComponent {
     vh: number = 0;
     vw: number = 0;
     isMenuOpened = false;
+    wasInside = false;
+  
+    
+    @HostListener('document:click')
+    clickout() {
+      if (!this.wasInside && this.isMenuOpened) {
+        this.isMenuOpened = false;
+      }
+      this.wasInside = false;
+    }
   
     constructor(
       private translateService: TranslateService
@@ -31,7 +41,11 @@ export class AppComponent {
 
     switchMenuState() {
         this.isMenuOpened = !this.isMenuOpened
+        this.wasInside = true;
+    }
+
+    clickInsideMenu() {
+      this.wasInside = true;
     }
 }
-
 
