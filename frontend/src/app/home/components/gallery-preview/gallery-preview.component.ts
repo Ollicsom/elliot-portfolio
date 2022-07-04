@@ -37,4 +37,12 @@ export class GalleryPreviewComponent implements OnInit {
   ngOnInit(): void {
     this.rotation = Math.round(Math.random());
   }
+
+  setAnimation() {
+    this.renderer.setStyle(this.photoElement.nativeElement, 'transition-duration', `0.5s`);
+    setTimeout(() => {
+      this.renderer.setStyle(this.photoElement.nativeElement, 'transition-duration', `0s`);
+    }, 500)
+  
+  }
 }

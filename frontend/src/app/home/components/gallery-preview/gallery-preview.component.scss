@@ -27,15 +27,15 @@
     margin: 2.5vh;
     height: 35vh;
     width: 30vh;
-    transition-duration: 0.5s;
-    background-image: url("../../../../assets/medias/CR-48.jpg");
+    background-image: url();
     background-repeat: no-repeat;
     background-position: center;
     background-size: 150%;
-    background-attachment: fixed;background-position-y: 50px;
+    background-attachment: fixed;
 }
 #polaroid-photo:hover{
     background-size: 170%;
+    transition-duration: 0.5s;
 }
 
 #ombre{

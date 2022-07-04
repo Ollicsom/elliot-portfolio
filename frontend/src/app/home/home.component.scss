@@ -50,8 +50,8 @@ h2:nth-child(2){
 }
 #test>div{
     display: flex;
-    justify-content: end;
-    align-items: end;
+    justify-content: flex-end;
+    align-items: flex-end;
     margin-top: 25vh;
     margin: 0;
     width: 25vw;
