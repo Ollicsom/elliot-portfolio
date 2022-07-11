@@ -4,20 +4,23 @@
     "password": null,
     "database": "elliot-portfolio",
     "host": "localhost",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "port": 4306
   },
   "test": {
     "username": "root",
     "password": null,
     "database": "elliot-portfolio",
     "host": "localhost",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "port": 4306
   },
   "production": {
     "username": "root",
     "password": null,
     "database": "elliot-portfolio",
     "host": "localhost",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "port": 4306
   }
 }

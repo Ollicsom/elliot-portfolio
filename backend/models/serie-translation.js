@@ -11,11 +11,17 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.SerieTranslation.belongsTo(models.Serie, { foreignKey: 'id' })
+      models.SerieTranslation.belongsTo(models.Serie, { foreignKey: 'SerieId', targetKey: 'id' })
     }
   }
   SerieTranslation.init({
-    LanguageISO: DataTypes.STRING
+    SerieId: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+    },
+    LanguageISO: DataTypes.STRING,
+    title: DataTypes.STRING,
+    description: DataTypes.STRING
   }, {
     freezeTableName: true,
     sequelize,

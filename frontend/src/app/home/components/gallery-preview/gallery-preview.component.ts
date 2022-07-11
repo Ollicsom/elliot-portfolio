@@ -1,4 +1,5 @@
 import { Component, HostListener, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-gallery-preview',
@@ -9,6 +10,7 @@ export class GalleryPreviewComponent implements OnInit {
 
   index2: number = 0;
   position: string = '';
+  backgroundUrl: string = '';
 
   @ViewChild("photo")
   photoElement: any;
@@ -27,7 +29,8 @@ export class GalleryPreviewComponent implements OnInit {
     } else {
       this.position = 'right'
     }
-}
+  }
+  @Input() serie: any;
   rotation = 0;
   
   constructor(
@@ -36,6 +39,9 @@ export class GalleryPreviewComponent implements OnInit {
   
   ngOnInit(): void {
     this.rotation = Math.round(Math.random());
+    console.log(environment.mediaEndpoint, this.serie)
+    console.log('done');
+    this.backgroundUrl = environment.mediaEndpoint + this.serie.main_photo_file;
   }
 
   setAnimation() {

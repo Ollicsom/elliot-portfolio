@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,7 @@ export class HomeComponent implements OnInit {
   fullname: any;
   @ViewChild("job")
   job: any;
+  series: any;
 
   @HostListener('window:scroll', ['$event'])
   onScroll() {
@@ -22,10 +24,12 @@ export class HomeComponent implements OnInit {
   }
 
   constructor(
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private apiService: ApiService
   ) { }
 
   ngOnInit(): void {
+    this.apiService.getSeries().subscribe(series => this.series = series)
   }
 
 }

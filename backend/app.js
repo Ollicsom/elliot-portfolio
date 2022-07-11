@@ -1,4 +1,4 @@
-const { sequelize, Photo, Serie, SerieTranslation, Sequelize } = require('./models');
+const { sequelize, Photo, Serie, SerieTranslation, Sequelize, PhotoTranslation } = require('./models');
 const express = require('express');
 const cors = require('cors');
 
@@ -11,14 +11,18 @@ app.use('/medias', express.static(__dirname + '/medias'));
 app.get('/api/getSeries', async(req, res) => {
   try{
     const photo = await Serie.findAll({
-      attributes: ['id', 'main_photo_file', Sequelize.literal('SerieTranslation.title', "title"), Sequelize.literal('SerieTranslation.description', "description")],
+      attributes: ['id', 'main_photo_file', [Sequelize.col('SerieTranslations.title'), "title"], [Sequelize.col('SerieTranslations.description'), "description"]],
       include: [{
         attributes: [],
         model: SerieTranslation,
         },
         {
-          attributes: [],
-          model: Photo
+          attributes: ['fileName', [Sequelize.literal('`Photos->PhotoTranslations`.`title`'), "title"], [Sequelize.literal('`Photos->PhotoTranslations`.`description`'), "description"]],
+          model: Photo,
+          include: [{
+            attributes: [],
+            model: PhotoTranslation
+          }]
         }
       ]
     })

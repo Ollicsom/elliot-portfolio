@@ -13,6 +13,7 @@ import { ShopComponent } from './shop/shop.component';
 import { LegalsComponent } from './legals/legals.component';
 import { BackOfficeComponent } from './back-office/back-office.component';
 import { GalleryPreviewComponent } from './home/components/gallery-preview/gallery-preview.component';
+import { ApiService } from './api.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -42,7 +43,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     }
     })
   ],
-  providers: [HttpClient],
+  providers: [HttpClient, ApiService],
   bootstrap: [AppComponent],
 
 })

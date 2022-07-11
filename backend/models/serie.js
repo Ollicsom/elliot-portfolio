@@ -9,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      models.Serie.hasOne(models.SerieTranslation, { foreignKey: 'SerieId' }),
-      models.Serie.hasMany(models.Photo, { foreignKey: 'SerieId' })
+      models.Serie.hasMany(models.SerieTranslation, { foreignKey: 'SerieId', sourceKey: 'id', }),
+      models.Serie.hasMany(models.Photo, { foreignKey: 'SerieId', sourceKey: 'id' })
     }
   }
   Serie.init({
@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     freezeTableName: true,
     sequelize,
     modelName: 'Serie',
+    tableName: 'serie'
   });
   return Serie;
 };

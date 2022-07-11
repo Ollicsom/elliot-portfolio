@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   class PhotoTranslation extends Model {
     static associate(models) {
       // define association here
+      models.PhotoTranslation.belongsTo(models.Photo, { foreignKey: 'PhotoId', targetKey: 'id' })
     }
   }
   PhotoTranslation.init({
@@ -15,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     freezeTableName: true,
     sequelize,
     modelName: 'PhotoTranslation',
+    tableName: 'photo_translation'
   });
   return PhotoTranslation;
 };

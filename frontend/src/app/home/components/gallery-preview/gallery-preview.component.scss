@@ -8,7 +8,7 @@
     background-color: white;
     height: 45vh;
     width: 35vh;
-    // position: absolute;
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,11 +27,10 @@
     margin: 2.5vh;
     height: 35vh;
     width: 30vh;
-    background-image: url();
     background-repeat: no-repeat;
     background-position: center;
+    background-size: 50%;
     background-size: 150%;
-    background-attachment: fixed;
 }
 #polaroid-photo:hover{
     background-size: 170%;
