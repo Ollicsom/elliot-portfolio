@@ -1,0 +1,82 @@
+@use '../../../../styles.scss' as variables;
+
+#container{
+    height: 90vh;
+    display: flex;
+    align-items: center;
+}
+#polaroid-container{
+    justify-self: center;
+    background-color: white;
+    height: 45vh;
+    width: 35vh;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.10);
+}
+
+.rotate-left {
+    transform: rotate(5deg);
+}
+
+.rotate-right {
+    transform: rotate(-5deg);
+}
+
+#polaroid-photo{
+    cursor: pointer;
+    margin: 2.5vh;
+    height: 35vh;
+    width: 30vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+    background-size: 150%;
+}
+#polaroid-photo:hover{
+    background-size: 170%;
+    transition-duration: 0.5s;
+}
+
+#ombre{
+    height: 100%;
+    width: 100%;
+    box-shadow: inset 0px 0px 25px black;
+}
+
+.position-right{
+    flex-direction: row-reverse;
+}
+
+#photo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 45%;
+}
+#text-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 30%;
+    text-align: center;
+}
+#text-container>*{
+    margin: 2%;
+    color: variables.$nearBlack;
+    font-size: 120%;
+}
+
+@media only screen and (max-width: 640px) {
+    #text-container{
+        display: none;
+    }
+    #photo-container{
+        width: 100%;
+    }
+}

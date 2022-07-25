@@ -1,10 +1,14 @@
 {
-    "shared": {},
+    "shared": {
+        "here": "Here"},
     "menu": {
         "menu": "Menu",
         "home": "Home",
         "gallery": "Gallery",
         "shop": "Shop"
+    },
+    "home": {
+        "photograph": "PHOTOGRAPH"
     },
     "main": {
         "translation" : "translation"
