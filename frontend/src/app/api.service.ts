@@ -12,9 +12,9 @@ export class ApiService {
         private http: HttpClient,
     ) { }
 
-    public getSeries(): Observable<Array<any>> {
+    public getSeries(languageISO: string): Observable<Array<any>> {
         return this.http.get<Array<any>>(
-            this.apiEndpoint + `getSeries`
+            this.apiEndpoint + `getSeries/${languageISO}`
         );
     }
 }

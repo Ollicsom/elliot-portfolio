@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit {
   @ViewChild("job")
   job: any;
   series: any;
+  vh: number = 0;
+  vw: number = 0;
 
   @HostListener('window:scroll', ['$event'])
   onScroll() {
@@ -29,7 +31,9 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.apiService.getSeries().subscribe(series => this.series = series)
+    this.apiService.getSeries(localStorage.getItem('language') || '').subscribe(series => this.series = series)
+    this.vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+    this.vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
   }
 
 }

@@ -1,3 +1,5 @@
+@use '../../../../styles.scss' as variables;
+
 #container{
     height: 90vh;
     display: flex;
@@ -24,6 +26,7 @@
 }
 
 #polaroid-photo{
+    cursor: pointer;
     margin: 2.5vh;
     height: 35vh;
     width: 30vh;
@@ -56,7 +59,24 @@
 }
 #text-container{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
+    width: 30%;
+    text-align: center;
+}
+#text-container>*{
+    margin: 2%;
+    color: variables.$nearBlack;
+    font-size: 120%;
+}
+
+@media only screen and (max-width: 640px) {
+    #text-container{
+        display: none;
+    }
+    #photo-container{
+        width: 100%;
+    }
 }

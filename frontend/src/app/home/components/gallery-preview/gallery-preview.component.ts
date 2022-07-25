@@ -11,13 +11,17 @@ export class GalleryPreviewComponent implements OnInit {
   index2: number = 0;
   position: string = '';
   backgroundUrl: string = '';
+  vh: number = 0;
+  vw: number = 0;
 
   @ViewChild("photo")
   photoElement: any;
 
   @HostListener('window:scroll', ['$event'])
   onScroll() {
-    let offset =  window.pageYOffset - (window.innerHeight*4.1) - (window.innerHeight * 0.9 * this.index2);
+    let offset = this.vw >= 640 ? 
+    window.pageYOffset - (window.innerHeight*4.1) - (window.innerHeight * 0.9 * this.index2) :
+    window.pageYOffset - window.innerHeight - (window.innerHeight * 0.9 * this.index2);
     let offsetParralax = offset * 0.15;
     this.renderer.setStyle(this.photoElement.nativeElement, 'background-position-y', `${(- this.photoElement.nativeElement.offsetHeight/3) - Math.round(offsetParralax)}px`);
   }
@@ -39,9 +43,9 @@ export class GalleryPreviewComponent implements OnInit {
   
   ngOnInit(): void {
     this.rotation = Math.round(Math.random());
-    console.log(environment.mediaEndpoint, this.serie)
-    console.log('done');
     this.backgroundUrl = environment.mediaEndpoint + this.serie.main_photo_file;
+    this.vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+    this.vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
   }
 
   setAnimation() {

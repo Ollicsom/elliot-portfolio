@@ -8,20 +8,26 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use('/medias', express.static(__dirname + '/medias'));
 
-app.get('/api/getSeries', async(req, res) => {
+app.get('/api/getSeries/:language', async(req, res) => {
   try{
     const photo = await Serie.findAll({
       attributes: ['id', 'main_photo_file', [Sequelize.col('SerieTranslations.title'), "title"], [Sequelize.col('SerieTranslations.description'), "description"]],
       include: [{
         attributes: [],
         model: SerieTranslation,
+        where: {
+          language_iso: req.params.language
+        }
         },
         {
           attributes: ['fileName', [Sequelize.literal('`Photos->PhotoTranslations`.`title`'), "title"], [Sequelize.literal('`Photos->PhotoTranslations`.`description`'), "description"]],
           model: Photo,
           include: [{
             attributes: [],
-            model: PhotoTranslation
+            model: PhotoTranslation,
+            where: {
+              language_iso: req.params.language
+            }
           }]
         }
       ]

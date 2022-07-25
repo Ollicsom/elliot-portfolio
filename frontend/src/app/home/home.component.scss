@@ -43,12 +43,12 @@ h2:nth-child(2){
     top: 270%;
 }
 
-#test{
+#transition{
     display: flex;
     flex-direction: row;
     background-color: variables.$colorPrimaryFade;
 }
-#test>div{
+#transition>div{
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
@@ -60,13 +60,13 @@ h2:nth-child(2){
     color: variables.$colorSecondary;
     font-size: 5vmin;
 }
-#test>div:nth-child(2){
+#transition>div:nth-child(2){
     height: 75vh;
 }
-#test>div:nth-child(3){
+#transition>div:nth-child(3){
     height: 125vh;
 }
-#test>div:nth-child(4){
+#transition>div:nth-child(4){
     height: 175vh;
     padding-right: 5vw;
 }
@@ -78,4 +78,13 @@ h2:nth-child(2){
 #h{
     width: 100vw;
     height: 100vh;
+}
+
+@media only screen and (max-width: 640px) {
+    #transition, #picture{
+        display: none;
+    }
+    #vest{
+        background-size: 90%;
+    }
 }

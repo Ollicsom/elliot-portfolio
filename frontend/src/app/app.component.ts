@@ -32,11 +32,12 @@ export class AppComponent {
     changeLanguage(value: string){
       localStorage.setItem("language", value);
       this.translateService.use(localStorage.getItem('language') || window.navigator.language.split('-')[0]);
+      window.location.reload();
     }
 
     ngOnInit() {
-      this.vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
-      this.vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+      this.vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+      this.vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
     }
 
     switchMenuState() {

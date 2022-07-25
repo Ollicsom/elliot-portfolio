@@ -1,5 +1,7 @@
 {
-    "shared": {},
+    "shared": {
+        "here": "Ici"
+    },
     "menu": {
         "menu": "Menu",
         "home": "Accueil",
