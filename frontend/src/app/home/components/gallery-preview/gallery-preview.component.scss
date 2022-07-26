@@ -72,6 +72,13 @@
     font-size: 120%;
 }
 
+#polaroid-container > a {
+    height: 100%;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+};
+
 @media only screen and (max-width: 640px) {
     #text-container{
         display: none;
@@ -79,4 +86,4 @@
     #photo-container{
         width: 100%;
     }
-}
+};

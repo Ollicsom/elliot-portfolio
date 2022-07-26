@@ -1,18 +1,20 @@
 <div id="container" [ngClass]="{'position-right': position === 'right' }">
     <div id="photo-container">
         <div id="polaroid-container" [ngClass]="{'rotate-left': rotation, 'rotate-right': !rotation }">
-            <div id="polaroid-photo" [ngStyle]="{'background-image': 'url(' + backgroundUrl + ')'}" #photo (mouseenter)="setAnimation()" (mouseleave)="setAnimation()">
-                <div id="ombre">
-    
+                <a [attr.href]=" 'gallery/' + serie.id">
+                <div id="polaroid-photo" [ngStyle]="{'background-image': 'url(' + backgroundUrl + ')'}" #photo (mouseenter)="setAnimation()" (mouseleave)="setAnimation()">
+                    <div id="ombre">
+        
+                    </div>
                 </div>
+                <p>{{serie.title}}</p>
+                </a>
             </div>
-            <p>{{serie.title}}</p>
-        </div>
     </div>
     <div id="text-container">
         <h3>{{serie.title}}</h3>
         <p>{{serie.description}}</p>
-        <a>{{ "shared.here" | translate}}</a>
+        <a [attr.href]=" 'gallery/' + serie.id">{{ "shared.here" | translate}}</a>
     </div>
 
 </div>

@@ -14,6 +14,7 @@ import { LegalsComponent } from './legals/legals.component';
 import { BackOfficeComponent } from './back-office/back-office.component';
 import { GalleryPreviewComponent } from './home/components/gallery-preview/gallery-preview.component';
 import { ApiService } from './api.service';
+import { MasonryGalleryModule } from 'ngx-masonry-gallery';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -31,6 +32,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     GalleryPreviewComponent
   ],
   imports: [
+    MasonryGalleryModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,

@@ -17,4 +17,10 @@ export class ApiService {
             this.apiEndpoint + `getSeries/${languageISO}`
         );
     }
+
+    public getSerie(serieId: number, languageISO: string): Observable<Array<any>> {
+        return this.http.get<Array<any>>(
+            this.apiEndpoint + `getSeries/${serieId}/${languageISO}`
+        );
+    }
 }

@@ -1,1 +1,5 @@
-<p>gallery works!</p>
+<div id="container">
+    <div id="gallery-container">
+        <ngx-masonry-gallery (clickImage)="log($event)" [imageClasses]="['test']" [width]="galleryWidth" [images]="images"></ngx-masonry-gallery>
+    </div>
+</div>
