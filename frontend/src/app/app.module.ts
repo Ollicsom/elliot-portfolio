@@ -15,6 +15,9 @@ import { BackOfficeComponent } from './back-office/back-office.component';
 import { GalleryPreviewComponent } from './home/components/gallery-preview/gallery-preview.component';
 import { ApiService } from './api.service';
 import { MasonryGalleryModule } from 'ngx-masonry-gallery';
+import { OpenedGalleryComponent } from './gallery/components/opened-gallery/opened-gallery.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AllGalleriesComponent } from './gallery/components/all-galleries/all-galleries.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -29,13 +32,16 @@ export function HttpLoaderFactory(http: HttpClient) {
     ShopComponent,
     LegalsComponent,
     BackOfficeComponent,
-    GalleryPreviewComponent
+    GalleryPreviewComponent,
+    OpenedGalleryComponent,
+    AllGalleriesComponent
   ],
   imports: [
     MasonryGalleryModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    FontAwesomeModule,
     TranslateModule.forRoot({
       defaultLanguage: 'fr',
       loader: {
@@ -43,7 +49,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
     }
-    })
+    }),
   ],
   providers: [HttpClient, ApiService],
   bootstrap: [AppComponent],

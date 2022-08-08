@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../api.service';
 import { IMasonryGalleryImage } from 'ngx-masonry-gallery';
+import { Photo } from "../shared/models/photo.model";
+import { Serie } from '../shared/models/serie.model';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-gallery',
@@ -10,29 +14,33 @@ import { IMasonryGalleryImage } from 'ngx-masonry-gallery';
 })
 export class GalleryComponent implements OnInit {
 
-    id: string | null | undefined;
-    serie: any;
-    urls: Array<string> = [
-        'http://localhost:8000/medias/CR-48.jpg', 'http://localhost:8000/medias/CR-49.jpg', 'http://localhost:8000/medias/CR-50.jpg',
-        'http://localhost:8000/medias/CR-14.jpg', 'http://localhost:8000/medias/CR-29.jpg', 'http://localhost:8000/medias/CR-30.jpg',
-        'http://localhost:8000/medias/CR-33.jpg', 'http://localhost:8000/medias/CR-39.jpg', 'http://localhost:8000/medias/CR-41.jpg',
-        'http://localhost:8000/medias/CR-44.jpg', 'http://localhost:8000/medias/CR-66.jpg'];
-
+    id: string;
+    serie: Serie;
     vh: number = 0;
     vw: number = 0;
     galleryWidth: number = 0;
+    openedIndex: number = 0;
+    isGalleryOpened = false;
+    faArrowLeft = faArrowLeft;
+    isSerieLoaded: boolean;
 
   constructor(
+    private location: Location,
     private route: ActivatedRoute,
     private apiService: ApiService) { }
 
   ngOnInit(): void {
     
     this.id = this.route.snapshot.paramMap.get('id')
-    console.log(this.id)
     this.apiService.getSerie(parseInt(this.id!, 10), localStorage.getItem('language') || '').subscribe(serie => {
         this.serie = serie;
-        console.log(this.serie)
+        console.log(this.serie.Photos.length)
+        if(this.serie && this.serie.Photos.length > 0){
+          this.isSerieLoaded = true;
+        } else {
+          this.isSerieLoaded = false;
+        }
+        console.log(this.isSerieLoaded)
     })
 
     this.vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
@@ -41,13 +49,25 @@ export class GalleryComponent implements OnInit {
   }
 
   public get images(): IMasonryGalleryImage[] {
-    return this.urls.map(m => <IMasonryGalleryImage>{
-        imageUrl: m
+    console.log( this.serie);
+    return this.serie.Photos.map((m: Photo) => <IMasonryGalleryImage>{
+        imageUrl: m.fileName
     }
   )};
 
-  log(value: any) {
-    console.log(value);
+  openGallery(value: any) {
+    this.openedIndex = this.serie.Photos.findIndex(photo => {
+      return photo.fileName == value.imageUrl
+    })
+    this.isGalleryOpened = true;
+  }
+
+  closeGallery() {
+    this.isGalleryOpened = false;
+  }
+
+  backHome() {
+    this.location.back()
   }
 
 }

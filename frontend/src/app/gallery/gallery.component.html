@@ -1,5 +1,10 @@
 <div id="container">
-    <div id="gallery-container">
-        <ngx-masonry-gallery (clickImage)="log($event)" [imageClasses]="['test']" [width]="galleryWidth" [images]="images"></ngx-masonry-gallery>
+    <fa-icon (click)="backHome()" class="icon fa-2x" [icon]="faArrowLeft"></fa-icon>
+    <div id="gallery-container" *ngIf="isSerieLoaded">
+        <ngx-masonry-gallery (clickImage)="openGallery($event)" [imageClasses]="['pointer']" [width]="galleryWidth" [images]="images"></ngx-masonry-gallery>
     </div>
+    <ng-container *ngIf="!isSerieLoaded">
+        <p>{{ 'gallery.nothing' | translate}}</p>
+    </ng-container >
 </div>
+<app-opened-gallery (closeGalleryEvent)="closeGallery()" *ngIf="isGalleryOpened" [index]="openedIndex" [photosList]="serie.Photos"></app-opened-gallery>

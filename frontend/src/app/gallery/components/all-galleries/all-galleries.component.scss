@@ -1,4 +1,4 @@
-@use '../../styles.scss' as variables;
+@use '../../../../styles.scss' as variables;
 
 .container{
     height: 86%;
@@ -9,7 +9,6 @@
     align-items: center;
 }
 .polaroid-container{
-    margin-bottom: 20%;
     justify-self: center;
     background-color: white;
     height: 45vh;
@@ -38,15 +37,13 @@
 
 .photo-container{
     display: grid;
+    margin-bottom: 20%;
 }
 
 .ombre{
     height: 100%;
     width: 100%;
     box-shadow: inset 0px 0px 25px black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .text-container{
@@ -71,14 +68,3 @@
     text-align: center;
     text-decoration: none;
 };
-
-.icon{
-    color: variables.$nearBlack;
-    justify-self: center;
-    opacity: 0.3;
-    transition-duration: 0.5s;
-}
-
-.polaroid-container:hover div>div>.icon{
-    transform: scale(1.5);
-}

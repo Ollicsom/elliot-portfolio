@@ -39,7 +39,7 @@ app.get('/api/getSeries/:language', async(req, res) => {
   }
 })
 
-app.get('/api/getSeries/:serieId/:language', async(req, res) => {
+app.get('/api/getSerie/:serieId/:language', async(req, res) => {
   try{
     const serie = await Serie.findAll({
       attributes: ['id', 'main_photo_file', [Sequelize.col('SerieTranslations.title'), "title"], [Sequelize.col('SerieTranslations.description'), "description"]],
@@ -66,7 +66,7 @@ app.get('/api/getSeries/:serieId/:language', async(req, res) => {
         }
       ]
     })
-    return res.json(serie);
+    return res.json(serie[0]);
   } catch(err) {
     console.log(err)
     return res.status(500).json(err)

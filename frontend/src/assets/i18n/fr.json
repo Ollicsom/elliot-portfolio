@@ -13,5 +13,11 @@
     },
     "main": {
         "translation" : "traduction"
+    },
+    "gallery": {
+        "nothing": "Il n'y a rien a afficher ici..."
+    },
+    "backoffice": {
+        "add": "Ajouter"
     }
 }

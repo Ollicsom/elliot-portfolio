@@ -70,6 +70,7 @@
     margin: 2%;
     color: variables.$nearBlack;
     font-size: 120%;
+    font-family: 'Roboto';
 }
 
 #polaroid-container > a {
@@ -78,6 +79,20 @@
     text-align: center;
     text-decoration: none;
 };
+
+.btn-here{
+    background-color: variables.$colorSecondaryLight;
+    padding: 2% 15%;
+    border-radius: 12px;
+    margin-top: 10% !important;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 5px 16px 0px rgb(0 0 0 / 30%), 5px 5px 8px 5px rgb(0 2 255 / 0%);
+}
+
+.btn-here:hover{
+    opacity: 0.8;
+}
 
 @media only screen and (max-width: 640px) {
     #text-container{

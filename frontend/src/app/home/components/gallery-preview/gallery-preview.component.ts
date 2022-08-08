@@ -53,6 +53,9 @@ export class GalleryPreviewComponent implements OnInit {
     setTimeout(() => {
       this.renderer.setStyle(this.photoElement.nativeElement, 'transition-duration', `0s`);
     }, 500)
-  
+  }
+
+  redirectTo(serieId: number) {
+    window.location.href = "gallery/" + serieId;
   }
 }

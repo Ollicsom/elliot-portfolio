@@ -1,3 +1,5 @@
+@use '../../styles.scss' as variables;
+
 #container{
     display: flex;
     justify-content: center;
@@ -7,4 +9,24 @@
 
 #gallery-container{
     width: 65%;
+}
+
+::ng-deep .pointer{
+    cursor: pointer;
+}
+
+.icon{
+    color: variables.$nearBlack;
+    cursor: pointer;
+    user-select: none;
+    transition-duration: 0.3s;
+    position: fixed;
+    top: 10%;
+    left: 8%;
+
+}
+
+.icon:hover{
+    color: variables.$colorPrimaryFade;
+    transform: scale(1.3);
 }

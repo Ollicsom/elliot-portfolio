@@ -12,5 +12,11 @@
     },
     "main": {
         "translation" : "translation"
+    },
+    "gallery": {
+        "nothing": "Nothing to seek here..."
+    },
+    "backoffice": {
+        "add": "Add"
     }
 }

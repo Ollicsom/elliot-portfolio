@@ -1,18 +1,16 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+import { ApiService } from 'src/app/api.service';
+import { Serie } from 'src/app/shared/models/serie.model';
 import { environment } from 'src/environments/environment';
-import { ApiService } from '../api.service';
-import { Serie } from '../shared/models/serie.model';
 
 @Component({
-  selector: 'app-back-office',
-  templateUrl: './back-office.component.html',
-  styleUrls: ['./back-office.component.scss']
+  selector: 'app-all-galleries',
+  templateUrl: './all-galleries.component.html',
+  styleUrls: ['./all-galleries.component.scss']
 })
-export class BackOfficeComponent implements OnInit {
+export class AllGalleriesComponent implements OnInit {
   series: Array<Serie>;
   mediaEndpoint = environment.mediaEndpoint;
-  faCirclePlus = faCirclePlus;
 
   constructor(
     private apiService: ApiService,

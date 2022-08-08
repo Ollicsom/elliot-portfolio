@@ -14,7 +14,7 @@
     <div id="text-container">
         <h3>{{serie.title}}</h3>
         <p>{{serie.description}}</p>
-        <a [attr.href]=" 'gallery/' + serie.id">{{ "shared.here" | translate}}</a>
+        <button (click)="redirectTo(serie.id)" class="btn-here">{{ "shared.here" | translate}}</button>
     </div>
 
 </div>
