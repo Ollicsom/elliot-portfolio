@@ -29,7 +29,10 @@ export class AppComponent implements OnInit {
       private apiService: ApiService
     ) {
         this.translateService.setDefaultLang(window.navigator.language.split('-')[0]);
-        this.translateService.use(localStorage.getItem('language') || window.navigator.language.split('-')[0])
+        if( !localStorage.getItem('language') ){
+          localStorage.setItem('language', window.navigator.language.split('-')[0]);
+        }
+        this.translateService.use(localStorage.getItem('language'))
     }
 
     changeLanguage(value: string){

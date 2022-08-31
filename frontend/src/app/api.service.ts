@@ -51,4 +51,11 @@ export class ApiService {
             serie
         );
     }
+
+    public login(userValue: {username: string, password: string}): Observable<any> {
+        return this.http.post<any>(
+            this.apiEndpoint + `login`,
+            userValue
+        );
+    }
 }

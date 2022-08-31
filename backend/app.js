@@ -1,6 +1,10 @@
-const { Photo, Serie, SerieTranslation, Sequelize, PhotoTranslation, Language } = require('./models');
+const { Photo, Serie, SerieTranslation, Sequelize, PhotoTranslation, Language, User } = require('./models');
+require("dotenv").config();
+
 const express = require('express');
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 const { Op } = require("sequelize");
 
 const app = express();
@@ -246,8 +250,44 @@ app.post('/api/updateOrCreateSerie', async(req, res) => {
   }
 })
 
+app.post('/api/login/', async(req, res) => {
+    try{
+        let username = req.body.username;
+        let password = req.body.password;
+        encryptedPassword = await bcrypt.hash(password, 10);
+
+        const user = await User.findOne({
+            where: {
+                username,
+            }
+        })
+        console.log(encryptedPassword);
+        console.log(user.dataValues.password);
+        let passwordMatch;
+        bcrypt.compare(encryptedPassword, user.password, function(err, res) {
+            passwordMatch = res;
+        });
+        if (user && passwordMatch) {
+          const token = jwt.sign(
+            { username, password },
+            process.env.JWT_KEY,
+            {
+              expiresIn: "2h",
+            }
+          );
+          user.token = token;
+          res.status(201).json(token);
+        } else {
+            return res.status(401).json({message: 'Wrong association of username and password'})
+        }
+    } catch(err) {
+        console.log(err);
+        return res.status(500).json(err)
+    }
+})
 
 
-app.listen(8000, () => {
-  console.log("App is listening on port localhost:8000")
+
+app.listen(8000, async () => {
+  console.log("App is listening on port localhost:8000");
 })
