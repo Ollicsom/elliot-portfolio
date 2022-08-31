@@ -18,6 +18,7 @@
     flex-direction: column;
     align-items: center;
     box-shadow: 0px 0px 15px rgba(0,0,0,0.10);
+    cursor: pointer;
 }
 
 
@@ -81,4 +82,18 @@
 
 .polaroid-container:hover div>div>.icon{
     transform: scale(1.5);
+}
+
+.back-icon{
+    color: #202120;
+    cursor: pointer;
+    user-select: none;
+    transition-duration: 0.3s;
+    position: fixed;
+    top: 10%;
+    left: 6%;
+}
+.back-icon:hover {
+    color: variables.$colorPrimaryFade;
+    transform: scale(1.3);
 }

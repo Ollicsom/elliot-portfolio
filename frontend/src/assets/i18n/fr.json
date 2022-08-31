@@ -9,7 +9,11 @@
         "shop": "Boutique"
     },
     "home": {
-        "photograph": "PHOTOGRAPHE"
+        "photograph": "PHOTOGRAPHE",
+        "transition1": "Observateur.",
+        "transition2": "Patient.",
+        "transition3": "Attentif.",
+        "transition4": "Magnifique."
     },
     "main": {
         "translation" : "traduction"
@@ -18,6 +22,12 @@
         "nothing": "Il n'y a rien a afficher ici..."
     },
     "backoffice": {
-        "add": "Ajouter"
+        "login": "Connexion",
+        "username": "Nom d'utilisateur",
+        "password": "Mot de passe",
+        "add": "Ajouter",
+        "title": "Titre",
+        "description": "Description",
+        "add-photo": "Ajouter une photo"
     }
 }

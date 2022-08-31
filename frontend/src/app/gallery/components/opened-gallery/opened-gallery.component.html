@@ -2,7 +2,7 @@
     <fa-icon (click)="changeIndex('back')" class="icon fa-2x" [icon]="faAngleLeft"></fa-icon>
     <div>
         <p class="photoTitle">{{photo.title}}</p>
-        <img class="photo" [src]="photo.fileName">
+        <img class="photo" [src]="mediaEndpoint + photo.fileName">
     </div>
     <fa-icon (click)="changeIndex('forward')" class="icon fa-2x" [icon]="faAngleRight"></fa-icon>
     <fa-icon (click)="closeGallery()" class="closeGallery icon fa-2x" [icon]="faTimes"></fa-icon>

@@ -23,7 +23,7 @@ export class GalleryPreviewComponent implements OnInit {
     window.pageYOffset - (window.innerHeight*4.1) - (window.innerHeight * 0.9 * this.index2) :
     window.pageYOffset - window.innerHeight - (window.innerHeight * 0.9 * this.index2);
     let offsetParralax = offset * 0.15;
-    this.renderer.setStyle(this.photoElement.nativeElement, 'background-position-y', `${(- this.photoElement.nativeElement.offsetHeight/3) - Math.round(offsetParralax)}px`);
+    this.renderer.setStyle(this.photoElement.nativeElement, 'background-position-y', `${(- this.photoElement.nativeElement.offsetHeight/1.8) - Math.round(offsetParralax)}px`);
   }
 
   @Input() set index(value: number) {

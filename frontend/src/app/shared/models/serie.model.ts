@@ -1,4 +1,5 @@
 import { Photo } from "./photo.model";
+import { Translation } from "./translation";
 
 export class Serie {
     id: number;
@@ -6,4 +7,5 @@ export class Serie {
     Photos: Array<Photo>;
     title: string;
     description: string;
+    SerieTranslations: Array<Translation>;
   }

@@ -18,6 +18,9 @@ import { MasonryGalleryModule } from 'ngx-masonry-gallery';
 import { OpenedGalleryComponent } from './gallery/components/opened-gallery/opened-gallery.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AllGalleriesComponent } from './gallery/components/all-galleries/all-galleries.component';
+import { EditFormComponent } from './back-office/components/edit-form/edit-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { saveSerieService } from './services/save-serie.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -34,7 +37,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     BackOfficeComponent,
     GalleryPreviewComponent,
     OpenedGalleryComponent,
-    AllGalleriesComponent
+    AllGalleriesComponent,
+    EditFormComponent
   ],
   imports: [
     MasonryGalleryModule,
@@ -42,6 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     AppRoutingModule,
     FontAwesomeModule,
+    ReactiveFormsModule,
     TranslateModule.forRoot({
       defaultLanguage: 'fr',
       loader: {
@@ -51,7 +56,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     }
     }),
   ],
-  providers: [HttpClient, ApiService],
+  providers: [HttpClient, ApiService, saveSerieService],
   bootstrap: [AppComponent],
 
 })

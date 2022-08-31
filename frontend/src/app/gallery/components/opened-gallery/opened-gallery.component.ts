@@ -1,6 +1,7 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faAngleLeft, faAngleRight, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Photo } from 'src/app/shared/models/photo.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-opened-gallery',
@@ -18,13 +19,13 @@ export class OpenedGalleryComponent implements OnInit {
   faAngleLeft = faAngleLeft;
   faAngleRight = faAngleRight;
   faTimes = faTimes;
+  mediaEndpoint = environment.mediaEndpoint;
 
   constructor() {
   }
 
   ngOnInit(): void {
     this.photo = this.photosList[this.index];
-    console.log(this.photosList);
   }
 
   changeIndex(side: string) {

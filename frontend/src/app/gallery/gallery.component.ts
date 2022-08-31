@@ -6,6 +6,7 @@ import { Photo } from "../shared/models/photo.model";
 import { Serie } from '../shared/models/serie.model';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Location } from '@angular/common'
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-gallery',
@@ -34,13 +35,11 @@ export class GalleryComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id')
     this.apiService.getSerie(parseInt(this.id!, 10), localStorage.getItem('language') || '').subscribe(serie => {
         this.serie = serie;
-        console.log(this.serie.Photos.length)
         if(this.serie && this.serie.Photos.length > 0){
           this.isSerieLoaded = true;
         } else {
           this.isSerieLoaded = false;
         }
-        console.log(this.isSerieLoaded)
     })
 
     this.vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
@@ -49,15 +48,14 @@ export class GalleryComponent implements OnInit {
   }
 
   public get images(): IMasonryGalleryImage[] {
-    console.log( this.serie);
     return this.serie.Photos.map((m: Photo) => <IMasonryGalleryImage>{
-        imageUrl: m.fileName
+        imageUrl: environment.mediaEndpoint + m.fileName
     }
   )};
 
   openGallery(value: any) {
     this.openedIndex = this.serie.Photos.findIndex(photo => {
-      return photo.fileName == value.imageUrl
+      return environment.mediaEndpoint + photo.fileName == value.imageUrl
     })
     this.isGalleryOpened = true;
   }

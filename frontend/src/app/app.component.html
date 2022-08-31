@@ -34,9 +34,12 @@
     </ng-template>
 </div>
 
-<div *ngIf="vw>640" class="app-padding" id="app-padding-left">
+<div *ngIf="vw>640 && languages" class="app-padding" id="app-padding-left">
     <p id="LanguageSelector">
-        <a (click)="changeLanguage('en')">English</a> · <a (click)="changeLanguage('fr')">Français</a> · <a (click)="changeLanguage('it')">Italiano</a> · <a (click)="changeLanguage('es')">Español</a>
+        <ng-container *ngFor="let language of languages; let languageIndex = index">
+            <a (click)="changeLanguage(language.LanguageISO)">{{language.name}}</a>
+            <span *ngIf="languageIndex < languages.length - 1"> · </span>
+        </ng-container>
     </p>
 </div>
 

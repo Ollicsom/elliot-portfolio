@@ -5,10 +5,10 @@
     <h2 id="h2" #job>{{ 'home.photograph' | translate}}</h2>
 </div>
 <div id="transition">
-    <div>Observateur.</div>
-    <div>Patient.</div>
-    <div>Attentif.</div>
-    <div>Magnifique.</div>
+    <div>{{ 'home.transition1' | translate}}</div>
+    <div>{{ 'home.transition2' | translate}}</div>
+    <div>{{ 'home.transition3' | translate}}</div>
+    <div>{{ 'home.transition4' | translate}}</div>
 </div>
 <div id="content" *ngIf="series">
     <app-gallery-preview *ngFor="let serie of series; let index = index" [serie]="serie" [index]="index"></app-gallery-preview>
