@@ -37,7 +37,7 @@
                     <img [src]="mediaEndpoint + getPhotoURL(i)">
                 </label>
                 <input class="d-none" (change)="changePhotoPicture($event, i)" [id]="'photo' + i" type="file" accept="image/png, image/jpeg, image/jpg">
-                <div class="photoTranslationsContainer" formArrayName="photoTranslations">
+                <div class="PhotoTranslationsContainer" formArrayName="PhotoTranslations">
                     <div *ngFor="let photoTranslationControls of getPhotoTranslation(photoControls); let y = index" [formGroupName]='y'>
                         <fieldset>
                             <legend>{{languages[y].name}}</legend>

@@ -32,8 +32,11 @@ export class BackOfficeComponent implements OnInit {
     this.apiService.getAllSeriesData().subscribe((series: Array<Serie>) => this.series = series);
 
     this.saveSerieService.saveSerieEvent.subscribe((res: Serie) => {
-        console.log(res);
-        this.series.splice(this.series.findIndex(serie => serie.id === res.id), 1);
+        let index = this.series.findIndex(serie => serie.id === res.id);
+        console.log(index);
+        if (index != -1){
+            this.series.splice(index, 1);
+        }
         this.series.push(res);
         this.series.sort(function(a, b) {
             return a.id - b.id;

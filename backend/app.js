@@ -172,41 +172,42 @@ app.post('/api/updateOrCreateSerie', async(req, res) => {
             id: {[Op.notIn]: serie.Photos.map(x => x.id)}
         }
     });
-    if(serie.id) {
-        let createdSerie;
-        const serieDB = await Serie.findOne({
-            where: {id: serie.id}
+    let createdSerie;
+    const serieDB = await Serie.findOne({
+        where: {id: serie.id}
+    })
+    if(serieDB){
+        serieDB.main_photo_file = serie.main_photo_file;
+        await serieDB.save();
+    } else {
+        createdSerie = await Serie.create({
+            main_photo_file: serie.main_photo_file
         })
-        if(serieDB){
-            serieDB.main_photo_file = serie.main_photo_file;
-            await serieDB.save();
+        serie.id = createdSerie.id;
+    }
+    serie.SerieTranslations.forEach(async serieTranslation => {
+        const translation = await SerieTranslation.findOne({
+            where: {
+                SerieId: serie.id,
+                LanguageISO: serieTranslation.LanguageISO
+            }
+        })
+        if(translation){
+            translation.title = serieTranslation.title;
+            translation.description = serieTranslation.description;
+            await translation.save();
         } else {
-            createdSerie = await Serie.create({
-                main_photo_file: serie.main_photo_file
+            await SerieTranslation.create({
+                SerieId: serie.id,
+                LanguageISO: serieTranslation.LanguageISO,
+                title: serieTranslation.title,
+                description: serieTranslation.description
             })
         }
-        serie.SerieTranslations.forEach(async serieTranslation => {
-            const translation = await SerieTranslation.findOne({
-                where: {
-                    SerieId: serie.id || createdSerie.id,
-                    LanguageISO: serieTranslation.LanguageISO
-                }
-            })
-            if(translation){
-                translation.title = serieTranslation.title;
-                translation.description = serieTranslation.description;
-                await translation.save();
-            } else {
-                await SerieTranslation.create({
-                    SerieId: serie.id,
-                    LanguageISO: serieTranslation.LanguageISO,
-                    title: serieTranslation.title,
-                    description: serieTranslation.description
-                })
-            }
-        });
+    });
 
-        serie.Photos.forEach(async photo => {
+    serie.Photos.forEach(async photo => {
+        if (photo.main_photo_file) {
             let createdPhoto;
             const photoDB = await Photo.findOne({
                 where: {id: photo.id}
@@ -218,31 +219,32 @@ app.post('/api/updateOrCreateSerie', async(req, res) => {
                 createdPhoto = await Photo.create({
                     SerieId: serie.id || createdSerie.id,
                     fileName: photo.fileName
-                })
+                });
+                photo.id = createdPhoto.id;
             }
 
-            photo.photoTranslations.forEach(async photoTranslation => {
-            const translation = await PhotoTranslation.findOne({
-                where: {
-                    PhotoId: photo.id || createdPhoto.id,
-                    LanguageISO: photoTranslation.LanguageISO
+            photo.PhotoTranslations.forEach(async photoTranslation => {
+                const translation = await PhotoTranslation.findOne({
+                    where: {
+                        PhotoId: photo.id || createdPhoto.id,
+                        LanguageISO: photoTranslation.LanguageISO
+                    }
+                })
+                if(translation){
+                    translation.title = photoTranslation.title;
+                    translation.description = photoTranslation.description;
+                    await translation.save();
+                } else {
+                    await PhotoTranslation.create({
+                        PhotoId: photo.id || createdPhoto.id,
+                        LanguageISO: photoTranslation.LanguageISO,
+                        title: photoTranslation.title,
+                        description: photoTranslation.description
+                    })
                 }
             })
-            if(translation){
-                translation.title = photoTranslation.title;
-                translation.description = photoTranslation.description;
-                await translation.save();
-            } else {
-                await PhotoTranslation.create({
-                    PhotoId: photo.id || createdPhoto.id,
-                    LanguageISO: photoTranslation.LanguageISO,
-                    title: photoTranslation.title,
-                    description: photoTranslation.description
-                })
-            }
-        })
+        }
     });
-    }
     return res.json(serie);
   } catch(err) {
     console.log(err)
@@ -254,20 +256,13 @@ app.post('/api/login/', async(req, res) => {
     try{
         let username = req.body.username;
         let password = req.body.password;
-        encryptedPassword = await bcrypt.hash(password, 10);
 
         const user = await User.findOne({
             where: {
                 username,
             }
         })
-        console.log(encryptedPassword);
-        console.log(user.dataValues.password);
-        let passwordMatch;
-        bcrypt.compare(encryptedPassword, user.password, function(err, res) {
-            passwordMatch = res;
-        });
-        if (user && passwordMatch) {
+        if (user && bcrypt.compare(password, user.password)) {
           const token = jwt.sign(
             { username, password },
             process.env.JWT_KEY,

@@ -1,5 +1,5 @@
 <div class="container" *ngIf="!serie">
-    <div class="polaroid-container">
+    <div class="polaroid-container" (click)="selectSerie(serie)">
         <div class="polaroid-photo" #photo (mouseenter)="setAnimation($event)" (mouseleave)="setAnimation($event)">
             <div class="ombre">
                 <fa-icon class="icon fa-5x" [icon]="faCirclePlus"></fa-icon>

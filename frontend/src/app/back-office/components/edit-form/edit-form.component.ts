@@ -30,7 +30,7 @@ export class EditFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.serieForm = new FormGroup({
         id: new FormControl(this.serie.id || null),
-        main_photo_file: new FormControl(this.serie.main_photo_file),
+        main_photo_file: new FormControl(this.serie.main_photo_file || null),
         SerieTranslations: new FormArray([]),
         Photos: new FormArray([])
     })
@@ -38,25 +38,30 @@ export class EditFormComponent implements OnInit, OnDestroy {
     const serieTranslationArray = this.serieForm.get('SerieTranslations') as FormArray;
     const photoFormArray = this.serieForm.get('Photos') as FormArray;
 
-
-    this.serie.Photos.forEach(photo => {
-        photoFormArray.push(new FormGroup({
-            id: new FormControl(photo.id),
-            fileName: new FormControl(photo.fileName),
-            photoTranslations: new FormArray([]),
-        }))
-    });
+    if (this.serie.Photos && this.serie.Photos.length) {
+      this.serie.Photos.forEach(photo => {
+          photoFormArray.push(new FormGroup({
+              id: new FormControl(photo.id),
+              fileName: new FormControl(photo.fileName),
+              PhotoTranslations: new FormArray([]),
+          }))
+      });
+    } else {
+      this.addPhoto();
+    }
 
     this.languages.forEach(language => {
-        const serieTranslation = this.serie.SerieTranslations.find(translation => translation.LanguageISO === language.LanguageISO);
+        const serieTranslation = this.serie.SerieTranslations?.find(translation => translation.LanguageISO === language.LanguageISO);
         serieTranslationArray.push(new FormGroup({
-            LanguageISO: new FormControl(language.LanguageISO),
-            title: new FormControl(serieTranslation?.title || null),
-            description: new FormControl(serieTranslation?.description || null)
+          LanguageISO: new FormControl(language.LanguageISO),
+          title: new FormControl(serieTranslation?.title || null),
+          description: new FormControl(serieTranslation?.description || null)
         }));
-        this.serie.Photos.forEach((photo, index) => {
-            const photoTranslation = photo.PhotoTranslations.find(translation => translation.LanguageISO === language.LanguageISO)
-            const photoTranslationArray = photoFormArray.get('' + index).get('photoTranslations') as FormArray;
+        let photos =  this.serieForm.get('Photos') as FormArray;
+        if(  this.serie.Photos)
+        photos.controls.forEach((photo, index) => {
+            const photoTranslation = this.serie.Photos[index].PhotoTranslations.find(translation => translation.LanguageISO === language.LanguageISO)
+            const photoTranslationArray = photoFormArray.get('' + index).get('PhotoTranslations') as FormArray;
             photoTranslationArray.push(new FormGroup({
                 LanguageISO: new FormControl(language.LanguageISO),
                 title: new FormControl(photoTranslation?.title || null),
@@ -97,9 +102,9 @@ export class EditFormComponent implements OnInit, OnDestroy {
     const photoControl = new FormGroup({
         id: new FormControl(null),
         fileName: new FormControl(null),
-        photoTranslations: new FormArray([]),
+        PhotoTranslations: new FormArray([]),
     });
-    const PhotoTranslationsArray = photoControl.get('photoTranslations') as FormArray;
+    const PhotoTranslationsArray = photoControl.get('PhotoTranslations') as FormArray;
     this.languages.forEach(language => {
         PhotoTranslationsArray.push(new FormGroup({
             LanguageISO: new FormControl(language.LanguageISO),
@@ -108,7 +113,6 @@ export class EditFormComponent implements OnInit, OnDestroy {
         }));
     })
     photoFormArray.push(photoControl);
-    this.savePhoto();
   }
 
   deletePhoto(index: number){
@@ -121,7 +125,7 @@ export class EditFormComponent implements OnInit, OnDestroy {
   }
 
   getPhotoTranslation(getPhotoTranslation: AbstractControl) {
-    const photoTranslationArray = getPhotoTranslation.get('photoTranslations') as FormArray;
+    const photoTranslationArray = getPhotoTranslation.get('PhotoTranslations') as FormArray;
     return photoTranslationArray.controls;
   }
 
@@ -134,7 +138,6 @@ export class EditFormComponent implements OnInit, OnDestroy {
   }
 
   getSerieName() {
-    console.log(this.serieForm.value)
     return this.serieForm.get('SerieTranslations').value.find((translation: any) => translation.LanguageISO == localStorage.getItem("language")).title;
   }
 
@@ -147,7 +150,6 @@ export class EditFormComponent implements OnInit, OnDestroy {
   }
   
   async savePhoto() {
-    console.log('hi', this.serieForm.value);
     await this.apiService.updateOrCreateSerie(this.serieForm.value).subscribe(serie => {
       this.saveSerieService.saveSerieEvent.emit(serie)
     });

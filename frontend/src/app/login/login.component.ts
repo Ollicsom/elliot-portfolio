@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
   }
 
   connect() {
-    console.log(this.loginForm.value);
     this.apiService.login(this.loginForm.value).subscribe(res => {
         localStorage.setItem('token', res);
         window.location.href = 'back-office/edit';
