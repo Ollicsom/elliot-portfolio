@@ -3,6 +3,7 @@ require("dotenv").config();
 
 const express = require('express');
 const cors = require('cors');
+const authJwt = require('./middleware/authJwt');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const { Op } = require("sequelize");
@@ -162,7 +163,7 @@ app.post('/api/uploadPhoto', multerUpload.single('upload'), async (req, res) => 
     res.status(400).send({error: error.message})
 })
 
-app.post('/api/updateOrCreateSerie', async(req, res) => {
+app.post('/api/updateOrCreateSerie', [authJwt.verifyToken], async(req, res) => {
   try{
     const serie = req.body;
     console.log(serie);

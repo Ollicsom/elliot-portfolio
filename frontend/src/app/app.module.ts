@@ -21,6 +21,7 @@ import { AllGalleriesComponent } from './gallery/components/all-galleries/all-ga
 import { EditFormComponent } from './back-office/components/edit-form/edit-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { saveSerieService } from './services/save-serie.service';
+import { AuthService } from './services/auth.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -56,7 +57,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     }
     }),
   ],
-  providers: [HttpClient, ApiService, saveSerieService],
+  providers: [HttpClient, ApiService, saveSerieService, AuthService],
   bootstrap: [AppComponent],
 
 })
