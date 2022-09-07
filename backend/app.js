@@ -166,7 +166,6 @@ app.post('/api/uploadPhoto', multerUpload.single('upload'), async (req, res) => 
 app.post('/api/updateOrCreateSerie', [authJwt.verifyToken], async(req, res) => {
   try{
     const serie = req.body;
-    console.log(serie);
     await Photo.destroy({
         where: { 
             SerieId: serie.id,
@@ -208,8 +207,8 @@ app.post('/api/updateOrCreateSerie', [authJwt.verifyToken], async(req, res) => {
     });
 
     serie.Photos.forEach(async photo => {
-        if (photo.main_photo_file) {
-            let createdPhoto;
+        let createdPhoto;
+        if (photo.fileName) {
             const photoDB = await Photo.findOne({
                 where: {id: photo.id}
             })
@@ -247,6 +246,21 @@ app.post('/api/updateOrCreateSerie', [authJwt.verifyToken], async(req, res) => {
         }
     });
     return res.json(serie);
+  } catch(err) {
+    console.log(err)
+    return res.status(500).json(err)
+  }
+})
+
+
+app.post('/api/deleteSerie', [authJwt.verifyToken], async(req, res) => {
+  try{
+    await Serie.destroy({
+      where: {
+        id: req.body.id
+      }
+    })
+    return res.json({mesage: "La série a été supprimé"});
   } catch(err) {
     console.log(err)
     return res.status(500).json(err)

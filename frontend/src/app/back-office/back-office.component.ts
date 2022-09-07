@@ -1,5 +1,5 @@
 import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { faArrowLeft, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faCirclePlus, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment';
 import { ApiService } from '../api.service';
 import { saveSerieService } from '../services/save-serie.service';
@@ -19,6 +19,8 @@ export class BackOfficeComponent implements OnInit {
   mediaEndpoint = environment.mediaEndpoint;
   faCirclePlus = faCirclePlus;
   faArrowLeft = faArrowLeft;
+  faTimes = faTimes;
+  isBlocked = false;
 
   @ViewChild('editForm', {read: EditFormComponent}) editForm: EditFormComponent;
   constructor(
@@ -33,7 +35,6 @@ export class BackOfficeComponent implements OnInit {
 
     this.saveSerieService.saveSerieEvent.subscribe((res: Serie) => {
         let index = this.series.findIndex(serie => serie.id === res.id);
-        console.log(index);
         if (index != -1){
             this.series.splice(index, 1);
         }
@@ -53,15 +54,26 @@ export class BackOfficeComponent implements OnInit {
   }
 
   selectSerie(serie?: Serie) {
-    if(serie){
-      this.serie = serie;
-    } else {
-      this.serie = new Serie();
+    if(!this.isBlocked) {
+      if(serie){
+        this.serie = serie;
+      } else {
+        this.serie = new Serie();
+      }
     }
   }
 
   backToSessionList() {
     this.serie = null;
+  }
+
+  deleteSerie(serieId: number, index: number) {
+    this.apiService.deleteSerie(serieId).subscribe(res => console.log(res));
+    this.series.splice(index, 1);
+  }
+
+  blockSerie(isBlocked: boolean) {
+    this.isBlocked = isBlocked;
   }
 
   getTranslation(index: number) {

@@ -29,5 +29,8 @@
         "title": "Titre",
         "description": "Description",
         "add-photo": "Ajouter une photo"
+    },
+    "shop": {
+        "no-shop": "Il n'y a pas de Boutique pour le moment."
     }
 }

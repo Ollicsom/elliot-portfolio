@@ -8,6 +8,10 @@
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
 }
+.mobileGrid{
+    grid-template-columns: 1fr !important;
+}
+
 .polaroid-container{
     justify-self: center;
     background-color: white;

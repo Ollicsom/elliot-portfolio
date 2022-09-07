@@ -4,6 +4,7 @@ import { BackOfficeComponent } from './back-office/back-office.component';
 import { EditFormComponent } from './back-office/components/edit-form/edit-form.component';
 import { AllGalleriesComponent } from './gallery/components/all-galleries/all-galleries.component';
 import { GalleryComponent } from './gallery/gallery.component';
+import { isLogged } from './guards/isLogged.guard copy';
 import { LoginGuard } from './guards/login.guard';
 import { HomeComponent } from './home/home.component';
 import { LegalsComponent } from './legals/legals.component';
@@ -15,7 +16,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'back-office', children: [
     { path: "", redirectTo: "/back-office/login", pathMatch: "full" },
-    { path: 'login', component: LoginComponent},
+    { path: 'login', component: LoginComponent, canActivate: [isLogged]},
     { path: 'edit',  component: BackOfficeComponent, canActivate: [LoginGuard]},
   ]},
   { path: 'gallery', component: AllGalleriesComponent},

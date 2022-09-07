@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AllGalleriesComponent implements OnInit {
   series: Array<Serie>;
+  vw: number;
   mediaEndpoint = environment.mediaEndpoint;
 
   constructor(
@@ -19,6 +20,7 @@ export class AllGalleriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.apiService.getSeries(localStorage.getItem('language') || '').subscribe((series: Array<Serie>) => this.series = series);
+    this.vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
   }
 
   

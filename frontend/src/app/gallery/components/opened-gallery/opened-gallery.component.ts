@@ -14,18 +14,21 @@ export class OpenedGalleryComponent implements OnInit {
   @Input() photosList: Array<Photo> = [];
   @Output() closeGalleryEvent = new EventEmitter<string>();
   photo: Photo;
+  vw: number;
   inside = false;
   elementRef: any;
   faAngleLeft = faAngleLeft;
   faAngleRight = faAngleRight;
   faTimes = faTimes;
   mediaEndpoint = environment.mediaEndpoint;
+  descriptionShown =false;
 
   constructor() {
   }
 
   ngOnInit(): void {
     this.photo = this.photosList[this.index];
+    this.vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
   }
 
   changeIndex(side: string) {
@@ -41,5 +44,13 @@ export class OpenedGalleryComponent implements OnInit {
 
   closeGallery() {
     this.closeGalleryEvent.emit();
+  }
+
+  displayDesc() {
+    this.descriptionShown = true;
+  }
+
+  hideDesc() {
+    this.descriptionShown = false;
   }
 }

@@ -1,9 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Language } from './shared/models/language';
 import { Serie } from './shared/models/serie.model';
+
+
 
 @Injectable()
 export class ApiService {
@@ -41,14 +43,24 @@ export class ApiService {
     public uploadImage(photoData: FormData): Observable<any> {
         return this.http.post<Array<Language>>(
             this.apiEndpoint + `uploadPhoto`,
-            photoData
+            photoData,
+            { headers: new HttpHeaders().set('Authorization', localStorage.getItem('token')) }
         );
     }
 
     public updateOrCreateSerie(serie: Serie): Observable<any> {
         return this.http.post<any>(
             this.apiEndpoint + `updateOrCreateSerie`,
-            serie
+            serie,
+            { headers: new HttpHeaders().set('Authorization', localStorage.getItem('token')) }
+        );
+    }
+
+    public deleteSerie(id: number): Observable<any> {
+        return this.http.post<any>(
+            this.apiEndpoint + `deleteSerie`,
+            {id},
+            { headers: new HttpHeaders().set('Authorization', localStorage.getItem('token')) }
         );
     }
 

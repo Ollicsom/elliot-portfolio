@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -17,16 +17,18 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      username: new FormControl(null),
-      password: new FormControl(null),
+      username: new FormControl(null, [Validators.required]),
+      password: new FormControl(null, [Validators.required]),
     }) 
   }
 
   connect() {
-    this.apiService.login(this.loginForm.value).subscribe(res => {
-        localStorage.setItem('token', res);
-        window.location.href = 'back-office/edit';
-    })
+    if( this.loginForm.valid ){ 
+        this.apiService.login(this.loginForm.value).subscribe(res => {
+            localStorage.setItem('token', res);
+            window.location.href = 'back-office/edit';
+        })
+    } else {}
   }
 
 }

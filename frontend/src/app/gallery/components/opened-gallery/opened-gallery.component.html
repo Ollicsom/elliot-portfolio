@@ -1,8 +1,11 @@
-<div class="container">
+<div class="container" [ngClass]="{'mobileContainer': vw <= 640}">
     <fa-icon (click)="changeIndex('back')" class="icon fa-2x" [icon]="faAngleLeft"></fa-icon>
     <div>
         <p class="photoTitle">{{photo.title}}</p>
-        <img class="photo" [src]="mediaEndpoint + photo.fileName">
+        <div class="relative" (mouseleave)="hideDesc()">
+            <img class="photo" (mouseenter)="displayDesc()" [ngClass]="{'hide-photo': descriptionShown}" [src]="mediaEndpoint + photo.fileName">
+            <p class="description" *ngIf="descriptionShown">{{photo.description}}</p>
+        </div>
     </div>
     <fa-icon (click)="changeIndex('forward')" class="icon fa-2x" [icon]="faAngleRight"></fa-icon>
     <fa-icon (click)="closeGallery()" class="closeGallery icon fa-2x" [icon]="faTimes"></fa-icon>

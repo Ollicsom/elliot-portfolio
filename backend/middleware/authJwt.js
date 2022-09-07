@@ -9,7 +9,8 @@ const verifyToken = (req, res, next) => {
         });
     }
 
-    jwt.verify(token.split(' ')[1], process.env.jwt_private, (err, decoded) => {
+    jwt.verify(token, process.env.JWT_KEY, (err, decoded) => {
+        console.log(err)
         if (err) {
             return res.status(401).send({
                 message: 'Unauthorized !',
@@ -20,19 +21,6 @@ const verifyToken = (req, res, next) => {
     });
 };
 
-const hasAccess = (req, res, next) => {
-    const token = req.headers.authorization;
-    if (token) {
-        jwt.verify(token.split(' ')[1], process.env.jwt_private, (err) => {
-            if (!err) {
-                next();
-            }
-        });
-    }
-    res.redirect('/');
-};
-
 module.exports = {
     verifyToken,
-    hasAccess
 };

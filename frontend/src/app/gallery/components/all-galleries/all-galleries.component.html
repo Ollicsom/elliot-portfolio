@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" [ngClass]="{'mobileGrid': vw <= 640}">
     <div *ngFor="let serie of series" class="photo-container">
         <div class="polaroid-container">
             <a [attr.href]=" 'gallery/' + serie.id">

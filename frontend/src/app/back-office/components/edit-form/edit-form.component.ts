@@ -58,16 +58,17 @@ export class EditFormComponent implements OnInit, OnDestroy {
           description: new FormControl(serieTranslation?.description || null)
         }));
         let photos =  this.serieForm.get('Photos') as FormArray;
-        if(  this.serie.Photos)
-        photos.controls.forEach((photo, index) => {
-            const photoTranslation = this.serie.Photos[index].PhotoTranslations.find(translation => translation.LanguageISO === language.LanguageISO)
-            const photoTranslationArray = photoFormArray.get('' + index).get('PhotoTranslations') as FormArray;
-            photoTranslationArray.push(new FormGroup({
-                LanguageISO: new FormControl(language.LanguageISO),
-                title: new FormControl(photoTranslation?.title || null),
-                description: new FormControl(photoTranslation?.description || null)
-            }));
-        })
+        if(this.serie.Photos && this.serie.Photos.length > 0){
+          photos.controls.forEach((photo, index) => {
+              const photoTranslation = this.serie.Photos[index].PhotoTranslations.find(translation => translation.LanguageISO === language.LanguageISO)
+              const photoTranslationArray = photoFormArray.get('' + index).get('PhotoTranslations') as FormArray;
+              photoTranslationArray.push(new FormGroup({
+                  LanguageISO: new FormControl(language.LanguageISO),
+                  title: new FormControl(photoTranslation?.title || null),
+                  description: new FormControl(photoTranslation?.description || null)
+              }));
+          })
+        }
     })
   }
 

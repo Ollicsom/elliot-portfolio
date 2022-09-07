@@ -9,7 +9,6 @@ export class AuthService {
 }
 
     isAuthenticated(): boolean {
-        console.log('riozejgizrehgoireg')
         const jwtHelper = new JwtHelperService();
         const token = this.getToken();
         if (token !== undefined && token !== null) {

@@ -14,6 +14,20 @@
     justify-items: center;
     align-items: center;
 }
+.mobileContainer{
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 92% 1fr;
+    grid-template-areas: "a a" "b c";
+}
+.mobileContainer>div{
+    grid-area: a;
+}
+.mobileContainer>.closeGallery{
+    top: 3rem;
+}
 
 .photo{
     max-width: 80vw;
@@ -21,11 +35,28 @@
     justify-self: center;
     border: variables.$nearWhite solid 1px;
     user-select: none;
+    transition-delay: 0.3;
+}
+
+.description{
+    color: variables.$nearWhite;
+    top: 0;
+    position: absolute;
+    margin: 10%;
+    font-size: 1.2rem;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    font-family: "Roboto";
+}
+
+.hide-photo{
+    filter: blur(10px);
 }
 
 .closeGallery{
     position: absolute;
-    top: 10%;
+    top: 6rem;
     right: 8%;
 }
 
@@ -46,4 +77,8 @@
     text-align: center;
     margin-bottom: 4%;
     font-size:1.5em;
+}
+
+.relative{
+    position: relative;
 }
