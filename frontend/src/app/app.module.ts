@@ -22,6 +22,9 @@ import { EditFormComponent } from './back-office/components/edit-form/edit-form.
 import { ReactiveFormsModule } from '@angular/forms';
 import { saveSerieService } from './services/save-serie.service';
 import { AuthService } from './services/auth.service';
+import { ToastComponent } from './toast/toast.component';
+import { ToasterComponent } from './toaster/toaster.component';
+import { ToastService } from './services/toast.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -39,7 +42,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     GalleryPreviewComponent,
     OpenedGalleryComponent,
     AllGalleriesComponent,
-    EditFormComponent
+    EditFormComponent,
+    ToastComponent,
+    ToasterComponent
   ],
   imports: [
     MasonryGalleryModule,
@@ -57,7 +62,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     }
     }),
   ],
-  providers: [HttpClient, ApiService, saveSerieService, AuthService],
+  providers: [HttpClient, ApiService, saveSerieService, AuthService, ToastService],
   bootstrap: [AppComponent],
 
 })

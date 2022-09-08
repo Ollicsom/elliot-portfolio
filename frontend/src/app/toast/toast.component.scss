@@ -1,0 +1,59 @@
+@use '../../styles.scss' as variables;
+
+.container {
+    animation: 0.2s ease-in fade-in;
+    height: 4rem;
+    width: 18rem;
+    background-color: variables.$nearWhite;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 3%;
+    z-index: 100;
+    border-radius: 4px;
+    box-shadow: 2px 2px 20px 0px rgba(0,0,0,0.2);
+    color: variables.$nearWhite;
+    padding: 10px 0px;
+}
+.container>div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-bottom: solid white 1px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+p{    
+    margin-left: 30px;
+}
+
+.dismiss{
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.sucess{
+    background-color: #198754;
+}
+
+.error{
+    background-color: #dc3545;
+}
+
+.info{
+    background-color: #0d6efd;
+}
+
+.warning{
+    background-color: #ffc107;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }  
+    100% {
+        opacity: 1;
+    }
+  }

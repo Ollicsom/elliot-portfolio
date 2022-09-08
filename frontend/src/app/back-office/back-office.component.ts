@@ -3,6 +3,7 @@ import { faArrowLeft, faCirclePlus, faTimes } from '@fortawesome/free-solid-svg-
 import { environment } from 'src/environments/environment';
 import { ApiService } from '../api.service';
 import { saveSerieService } from '../services/save-serie.service';
+import { ToastService } from '../services/toast.service';
 import { Language } from '../shared/models/language';
 import { Serie } from '../shared/models/serie.model';
 import { EditFormComponent } from './components/edit-form/edit-form.component';
@@ -26,7 +27,8 @@ export class BackOfficeComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private renderer: Renderer2,
-    private saveSerieService: saveSerieService
+    private saveSerieService: saveSerieService,
+    private toastsService: ToastService
   ) { }
 
   ngOnInit(): void {
@@ -68,7 +70,12 @@ export class BackOfficeComponent implements OnInit {
   }
 
   deleteSerie(serieId: number, index: number) {
-    this.apiService.deleteSerie(serieId).subscribe(res => console.log(res));
+    this.apiService.deleteSerie(serieId).subscribe((res) => 
+      this.toastsService.showToast('Succès', 'La série a été supprimé', 'sucess')
+    ), (err: any) => {
+      console.log(err);
+      this.toastsService.showToast('Erreur', err, 'error')
+    };
     this.series.splice(index, 1);
   }
 

@@ -3,6 +3,7 @@ import { AbstractControl, FormArray, FormControl, FormGroup } from '@angular/for
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { ApiService } from 'src/app/api.service';
 import { saveSerieService } from 'src/app/services/save-serie.service';
+import { ToastService } from 'src/app/services/toast.service';
 import { Language } from 'src/app/shared/models/language';
 import { Serie } from 'src/app/shared/models/serie.model';
 import { environment } from 'src/environments/environment';
@@ -23,7 +24,8 @@ export class EditFormComponent implements OnInit, OnDestroy {
   
   constructor(
     private apiService: ApiService,
-    private saveSerieService: saveSerieService
+    private saveSerieService: saveSerieService,
+    private toastsService: ToastService
   ) {
    }
 
@@ -152,7 +154,8 @@ export class EditFormComponent implements OnInit, OnDestroy {
   
   async savePhoto() {
     await this.apiService.updateOrCreateSerie(this.serieForm.value).subscribe(serie => {
-      this.saveSerieService.saveSerieEvent.emit(serie)
+      this.saveSerieService.saveSerieEvent.emit(serie);
+      this.toastsService.showToast('Succès', 'Les modifications ont bien été pris en compte', 'sucess');
     });
   }
 
