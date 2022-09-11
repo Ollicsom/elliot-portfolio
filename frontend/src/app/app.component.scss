@@ -26,6 +26,7 @@
 #app-padding-left, #app-padding-right{
     height: 100vh;
     width: variables.$paddingWidth;
+    writing-mode: vertical-rl;
 }
 #app-padding-left{
     top: 0;
@@ -46,7 +47,6 @@ h1{
 }
 
 #LanguageSelector{
-    writing-mode: vertical-rl;
     text-orientation: mixed;
 }
 

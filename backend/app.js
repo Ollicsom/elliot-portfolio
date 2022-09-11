@@ -13,6 +13,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded());
 app.use('/medias', express.static(__dirname + '/medias'));
+app.use(express.static('elliot-mathey'));
+
 const multer = require('multer');
 
 var storage = multer.diskStorage({
@@ -245,16 +247,6 @@ app.post('/api/updateOrCreateSerie', [authJwt.verifyToken], async(req, res) => {
             })
         }
     });
-    console.log('HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
-    console.log('HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
-    console.log('HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
-    console.log('HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
-    console.log('HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
-    console.log('HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
-    console.log('HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
-    console.log('HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
-    console.log('HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
-    console.log('HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
     return res.json(serie);
   } catch(err) {
     console.log(err)
@@ -272,7 +264,6 @@ app.post('/api/deleteSerie', [authJwt.verifyToken], async(req, res) => {
     })
     return res.json({mesage: "La série a été supprimé"});
   } catch(err) {
-    console.log(err)
     return res.status(500).json(err)
   }
 })

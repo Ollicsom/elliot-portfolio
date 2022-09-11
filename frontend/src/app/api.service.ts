@@ -17,13 +17,13 @@ export class ApiService {
     ) { }
 
     public getSeries(languageISO: string): Observable<Array<Serie>> {
-        return this.http.get<Array<any>>(
+        return this.http.get<Array<Serie>>(
             this.apiEndpoint + `getSeries/${languageISO}`
         );
     }
 
     public getAllSeriesData(): Observable<Array<Serie>> {
-        return this.http.get<Array<any>>(
+        return this.http.get<Array<Serie>>(
             this.apiEndpoint + `getAllSeriesData/`
         );
     }
@@ -41,15 +41,15 @@ export class ApiService {
     }
 
     public uploadImage(photoData: FormData): Observable<any> {
-        return this.http.post<Array<Language>>(
+        return this.http.post<any>(
             this.apiEndpoint + `uploadPhoto`,
             photoData,
             { headers: new HttpHeaders().set('Authorization', localStorage.getItem('token')) }
         );
     }
 
-    public updateOrCreateSerie(serie: Serie): Observable<any> {
-        return this.http.post<any>(
+    public updateOrCreateSerie(serie: Serie): Observable<Serie> {
+        return this.http.post<Serie>(
             this.apiEndpoint + `updateOrCreateSerie`,
             serie,
             { headers: new HttpHeaders().set('Authorization', localStorage.getItem('token')) }

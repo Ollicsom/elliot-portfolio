@@ -6,25 +6,26 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { GalleryComponent } from './gallery/gallery.component';
-import { ShopComponent } from './shop/shop.component';
-import { LegalsComponent } from './legals/legals.component';
-import { BackOfficeComponent } from './back-office/back-office.component';
-import { GalleryPreviewComponent } from './home/components/gallery-preview/gallery-preview.component';
 import { ApiService } from './api.service';
 import { MasonryGalleryModule } from 'ngx-masonry-gallery';
-import { OpenedGalleryComponent } from './gallery/components/opened-gallery/opened-gallery.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { AllGalleriesComponent } from './gallery/components/all-galleries/all-galleries.component';
-import { EditFormComponent } from './back-office/components/edit-form/edit-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { saveSerieService } from './services/save-serie.service';
-import { AuthService } from './services/auth.service';
-import { ToastComponent } from './toast/toast.component';
-import { ToasterComponent } from './toaster/toaster.component';
-import { ToastService } from './services/toast.service';
+import { ToasterComponent } from './shared/toaster/toaster.component';
+import { ToastComponent } from './shared/toast/toast.component';
+import { EditFormComponent } from './components/back-office/components/edit-form/edit-form.component';
+import { AllGalleriesComponent } from './components/back-office/components/gallery/components/all-galleries/all-galleries.component';
+import { OpenedGalleryComponent } from './components/back-office/components/gallery/components/opened-gallery/opened-gallery.component';
+import { GalleryPreviewComponent } from './components/home/components/gallery-preview/gallery-preview.component';
+import { BackOfficeComponent } from './components/back-office/back-office.component';
+import { LegalsComponent } from './components/legals/legals.component';
+import { ShopComponent } from './components/shop/shop.component';
+import { GalleryComponent } from './components/back-office/components/gallery/gallery.component';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { saveSerieService } from './shared/services/save-serie.service';
+import { AuthService } from './shared/services/auth.service';
+import { ToastService } from './shared/services/toast.service';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -62,7 +63,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     }
     }),
   ],
-  providers: [HttpClient, ApiService, saveSerieService, AuthService, ToastService],
+  providers: [HttpClient, ApiService, saveSerieService, AuthService, ToastService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent],
 
 })

@@ -1,9 +1,9 @@
 <ng-container *ngIf="vw>640;else menuOpenedMobile">
     <div [ngClass]="{'active': isMenuOpened }" id="openedMenu" (click)="clickInsideMenu()">
         <div>
-            <p><a href="/home">{{ 'menu.home' | translate}}</a></p>
-            <p><a href="/gallery">{{ 'menu.gallery' | translate}}</a></p>
-            <p><a href="/shop">{{ 'menu.shop' | translate}}</a></p>
+            <p><a routerLink="/home">{{ 'menu.home' | translate}}</a></p>
+            <p><a routerLink="/gallery">{{ 'menu.gallery' | translate}}</a></p>
+            <p><a routerLink="/shop">{{ 'menu.shop' | translate}}</a></p>
         </div>
         <p>{{ 'menu.menu' | translate }}</p>
     </div>
@@ -13,14 +13,14 @@
 
 <ng-template #menuOpenedMobile>
     <div [ngClass]="{'active': isMenuOpened }" id="openedMenuMobile">
-        <p><a href="/home">{{ 'menu.home' | translate}}</a></p>
-        <p><a href="/gallery">{{ 'menu.gallery' | translate}}</a></p>
-        <p><a href="/shop">{{ 'menu.shop' | translate}}</a></p>
+        <p><a routerLink="/home">{{ 'menu.home' | translate}}</a></p>
+        <p><a routerLink="/gallery">{{ 'menu.gallery' | translate}}</a></p>
+        <p><a routerLink="/shop">{{ 'menu.shop' | translate}}</a></p>
     </div>
 </ng-template>
 
 <div class="app-padding" id="app-header">
-    <a href="/"><h1>ELLIOT MATHEY</h1></a>
+    <a routerLink="/"><h1>ELLIOT MATHEY</h1></a>
     <div (click)="switchMenuState()" *ngIf="vw>640;else menuMobile" id="menu">
         <img src="../assets/medias/polaroid.png">
         <p>{{ 'menu.menu' | translate }}</p>
@@ -44,6 +44,7 @@
 </div>
 
 <div *ngIf="vw>640" class="app-padding" id="app-padding-right">
+    <a routerLink="legals">{{ 'legals.legals' | translate }}</a>
 </div>
 
 <ng-container *ngIf="vw>640">

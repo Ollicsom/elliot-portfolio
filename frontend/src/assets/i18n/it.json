@@ -1,15 +1,55 @@
 {
-    "shared": {},
+    "shared": {
+        "here": "Qua"
+    },
     "menu": {
-        "menu": "Menu",
-        "home": "Home",
-        "gallery": "Gallery",
-        "shop": "Shop"
+        "menu": "Menù",
+        "home": "Accoglienza",
+        "gallery": "Galleria",
+        "shop": "Negozio"
     },
     "home": {
-        "photograph": "PHOTOGRAPH"
+        "photograph": "FOTOGRAFO",
+        "transition1": "Osservatore.",
+        "transition2": "Paziente.",
+        "transition3": "Attento.",
+        "transition4": "Meraviglioso."
     },
     "main": {
         "translation" : "traduzione"
+    },
+    "gallery": {
+        "nothing": "Non c'è niente da visualizzare qui..."
+    },
+    "backoffice": {
+        "login": "Login",
+        "username": "Nome utente",
+        "password": "Parola d'ordine",
+        "add": "Aggiungere",
+        "title": "Titolo",
+        "description": "Descrizione",
+        "add-photo": "Aggiungi una foto"
+    },
+    "shop": {
+        "no-shop": "Non c'è nessun Negozio al momento."
+    },
+    "legals": {
+        "legals": "Menzione legale",
+        "ower": "Proprietario :",
+        "ower-name": "Elliot Mathey",
+        "ower-adress": "58 boulevard Aristide Briand",
+        "ower-zip": "94500 Champigny sur marne",
+        "ower-mail": "Elliotmathey8@gmail.com",
+        "host": "Ospite :",
+        "host-name": "Hostinger",
+        "host-adress": "61 Lordou Vironos Street,",
+        "host-zip": "6023 Larnaca, Chypre",
+        "host-link": "https://www.hostinger.fr/",
+        "publications": "Gestione della pubblicazione :",
+        "publication-description": "L'editore di questo sito Web è Elliot Mathey. È responsabile di tutte le pubblicazioni presenti su questo sito. I contenuti testuali delle pagine sono quindi tutelati dalla proprietà intellettuale di quest'ultima.",
+        "link": "Link esterno",
+        "link-description": "I link esterni presenti in questo sito non reindirizzano a siti sotto la responsabilità di Elliot Mathey, eventuali attività illecite presenti su quest'ultimo non possono quindi essere seguite da un'azione penale nei confronti del Sig. Mathey. Se un collegamento punta a contenuti offensivi, offensivi o illegali, si prega di avvisare il proprietario del sito il prima possibile in modo che possa adottare le misure necessarie per rimuovere il collegamento in questione.",
+        "data": "Utilizzi dei dati personali e dei cookie",
+        "data-description": "Per ottenere una migliore referenziazione, questo Portfolio utilizza Google Analytics. Ciò implica che i cookie vengono raccolti. I cookie sono file di testo memorizzati sul tuo computer contenenti informazioni sull'utilizzo dei siti Web e sul tuo indirizzo IP. Questi dati raccolti da google saranno resi anonimi ma se ti opponi ancora alla raccolta dei cookie, puoi disattivarli sul tuo browser."
     }
 }

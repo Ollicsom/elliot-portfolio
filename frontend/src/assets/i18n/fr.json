@@ -32,5 +32,24 @@
     },
     "shop": {
         "no-shop": "Il n'y a pas de Boutique pour le moment."
+    },
+    "legals": {
+        "legals": "Mention Légales",
+        "ower": "Propriétaire :",
+        "ower-name": "Elliot Mathey",
+        "ower-adress": "58 boulevard Aristide Briand",
+        "ower-zip": "94500 Champigny sur marne",
+        "ower-mail": "Elliotmathey8@gmail.com",
+        "host": "Hébergeur :",
+        "host-name": "Hostinger",
+        "host-adress": "61 Lordou Vironos Street,",
+        "host-zip": "6023 Larnaca, Chypre",
+        "host-link": "https://www.hostinger.fr/",
+        "publications": "Gestion des publications :",
+        "publication-description": "Le responsable de la publication de ce site web est Elliot Mathey. Il est responsable de l'intégralité des publications trouvables sur ce site. Les contenus textuelles des pages sont par conséquent sous la protection de la propriété intellectuelle de cette dernière.",
+        "link": "Liens externes",
+        "link-description": "Les liens externes présents sur ce site ne redirigent pas vers des sites sous la responsabilité d'Elliot Mathey, toute potentielles activités illégales présentes sur ces derniers ne pourront donc pas être suivi d’une poursuite envers M.Mathey. Si un lien pointent vers un contenu blessant, offensant ou illégal, merci de prévenir le propriétaire du site dans les plus brefs délai afin qu’elle puisse faire le nécessaire pour supprimer le lien en question.",
+        "data": "Utilisations des données personnelles et des cookies",
+        "data-description": "Afin d'obtenir un meilleur référencement, ce Portfolio utilise google Analytics. Ce qui implique que des cookies sont récoltés. Des cookies sont des fichiers textes stockés sur votre ordinateur contenant des informations concerannt votre utilisation des sites internet ainsi que votre adressse IP. Ces données recoltés par google seront anonymisé mais si vous vous opposez tout de meme a la collecte de cookie, vous pouvez la désactivés sur votre navigateur."
     }
 }

@@ -1,0 +1,14 @@
+<div class="container" #toast (mouseenter)="mouseEnter()" (mouseleave)="mouseLeave()">
+    <span class="{{type}} progress" #progress></span>
+    <span class="icon {{type}}" [ngSwitch]="type">
+        <fa-icon *ngSwitchCase="'sucess'"  [icon]="faCheck"></fa-icon>
+        <fa-icon *ngSwitchCase="'error'"  [icon]="faXmark"></fa-icon>
+        <fa-icon *ngSwitchCase="'warning'"  [icon]="faTriangleExclamation"></fa-icon>
+        <fa-icon *ngSwitchCase="'info'"  [icon]="faInfo"></fa-icon>
+    </span>
+    <div>
+        <p>{{title}}</p>
+        <p>{{message}}</p>
+    </div>
+    <fa-icon class="dismiss fa-x" [icon]="faTimes" (click)="dismiss()"></fa-icon>
+</div>

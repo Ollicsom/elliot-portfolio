@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BackOfficeComponent } from './back-office/back-office.component';
-import { EditFormComponent } from './back-office/components/edit-form/edit-form.component';
-import { AllGalleriesComponent } from './gallery/components/all-galleries/all-galleries.component';
-import { GalleryComponent } from './gallery/gallery.component';
-import { isLogged } from './guards/isLogged.guard copy';
-import { LoginGuard } from './guards/login.guard';
-import { HomeComponent } from './home/home.component';
-import { LegalsComponent } from './legals/legals.component';
-import { LoginComponent } from './login/login.component';
-import { ShopComponent } from './shop/shop.component';
+import { BackOfficeComponent } from './components/back-office/back-office.component';
+import { AllGalleriesComponent } from './components/back-office/components/gallery/components/all-galleries/all-galleries.component';
+import { GalleryComponent } from './components/back-office/components/gallery/gallery.component';
+import { HomeComponent } from './components/home/home.component';
+import { LegalsComponent } from './components/legals/legals.component';
+import { LoginComponent } from './components/login/login.component';
+import { ShopComponent } from './components/shop/shop.component';
+import { isLogged } from './shared/guards/isLogged.guard copy';
+import { LoginGuard } from './shared/guards/login.guard';
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
