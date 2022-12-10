@@ -1,0 +1,65 @@
+<ng-container *ngIf="serie && languages && serieForm">
+    <form [formGroup]="serieForm">
+        <div class="serieGrid bg-dark">
+            <label for="main_photo_file">
+                <div class="polaroid-container">
+                    <div class="polaroid-photo" [ngStyle]="{'background-image': 'url(' + mediaEndpoint + getSerieUrl() + ')'}">
+                        <div class="ombre"></div>
+                    </div>
+                    <p>{{getSerieName()}}</p>
+                </div>
+            </label>
+            <input class="d-none" (change)="changeSeriePicture($event)" id="main_photo_file" type="file" accept="image/png, image/jpeg, image/jpg" required>
+            <div formArrayName='SerieTranslations' class="serieTranslationGrid">
+                <div class="serieTranslation" *ngFor="let serieTranslationControls of serieTranslation.controls; let i = index" [formGroupName]='i'>
+                    <fieldset>
+                        <legend>{{languages[i].name}}</legend>
+                        <div class="omrs-input-group">
+                            <label class="omrs-input-underlined">
+                                <span class="omrs-input-label">{{ 'backoffice.title' | translate }}</span>
+                                <input formControlName="title" name="serieTitle" type="text">
+                            </label>
+                        </div>
+                        <div class="omrs-input-group">
+                            <label class="omrs-input-underlined">
+                                <span class="omrs-input-label">{{ 'backoffice.description' | translate }}</span>
+                                <textarea formControlName="description" rows="5" name="serieDesc"></textarea>
+                            </label>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <div formArrayName='Photos' class="photoList">
+            <div *ngFor="let photoControls of photo.controls; let i = index" [formGroupName]='i' class="photoContainer">
+                <fa-icon (click)="deletePhoto(i)" class="deletePhoto icon fa-2x" [icon]="faTimes"></fa-icon>
+                <label [for]="'photo' + i">
+                    <img [src]="mediaEndpoint + getPhotoURL(i)">
+                </label>
+                <input class="d-none" (change)="changePhotoPicture($event, i)" [id]="'photo' + i" type="file" accept="image/png, image/jpeg, image/jpg">
+                <div class="PhotoTranslationsContainer" formArrayName="PhotoTranslations">
+                    <div *ngFor="let photoTranslationControls of getPhotoTranslation(photoControls); let y = index" [formGroupName]='y'>
+                        <fieldset>
+                            <legend>{{languages[y].name}}</legend>
+                            <div class="omrs-input-group-photo">
+                                <label class="omrs-input-underlined">
+                                    <span class="omrs-input-label">{{ 'backoffice.title' | translate }}</span>
+                                    <input formControlName="title" name="photoTitle" type="text">
+                                </label>
+                            </div>
+                            <div class="omrs-input-group-photo">
+                                <label class="omrs-input-underlined">
+                                    <span class="omrs-input-label">{{ 'backoffice.description' | translate }}</span>
+                                    <textarea formControlName="description"  rows="5" name="photoDesc"></textarea>
+                                </label>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="photoContainer" (click)="addPhoto()">
+            {{ 'backoffice.add-photo' | translate }}
+        </div>
+    </form>
+</ng-container>

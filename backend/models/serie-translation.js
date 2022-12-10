@@ -19,7 +19,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       primaryKey: true,
     },
-    LanguageISO: DataTypes.STRING,
+    LanguageISO: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+    },
     title: DataTypes.STRING,
     description: DataTypes.STRING
   }, {

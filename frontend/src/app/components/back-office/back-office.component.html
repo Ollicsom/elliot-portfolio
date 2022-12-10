@@ -1,0 +1,26 @@
+<div class="container" *ngIf="!serie">
+    <div class="polaroid-container" (click)="selectSerie(serie)">
+        <div class="polaroid-photo" #photo (mouseenter)="setAnimation($event)" (mouseleave)="setAnimation($event)">
+            <div class="ombre">
+                <fa-icon class="icon fa-5x" [icon]="faCirclePlus"></fa-icon>
+            </div>
+        </div>
+        <p>{{ "backoffice.add" | translate }}</p>
+    </div>
+    <div *ngFor="let serie of series; let i = index" class="photo-container">
+        <div class="polaroid-container" (click)="selectSerie(serie)">
+            <fa-icon (click)="deleteSerie(serie.id, i)" (mouseenter)="blockSerie(true)" (mouseleave)="blockSerie(false)" class="deleteSerie icon fa-2x" [icon]="faTimes"></fa-icon>
+            <div class="polaroid-photo" [ngStyle]="{'background-image': 'url(' + mediaEndpoint + serie.main_photo_file + ')'}" #photo (mouseenter)="setAnimation($event)" (mouseleave)="setAnimation($event)">
+                <div class="ombre">
+    
+                </div>
+            </div>
+            <p>{{getTranslation(i).title}}</p>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="serie">
+    <fa-icon (click)="backToSessionList()" class="back-icon icon fa-2x" [icon]="faArrowLeft"></fa-icon>
+    <app-edit-form [serie]="serie" [languages]="languages"></app-edit-form>
+</div>

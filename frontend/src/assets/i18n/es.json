@@ -1,15 +1,55 @@
 {
-    "shared": {},
+    "shared": {
+        "here": "Aquí"
+    },
     "menu": {
-        "menu": "Menu",
-        "home": "Home",
-        "gallery": "Gallery",
-        "shop": "Shop"
+        "menu": "Menú",
+        "home": "Bienvenida",
+        "gallery": "Galería",
+        "shop": "Comercio"
     },
     "home": {
-        "photograph": "PHOTOGRAPH"
+        "photograph": "FOTÓGRAFO",
+        "transition1": "Observador.",
+        "transition2": "Paciente.",
+        "transition3": "Atento.",
+        "transition4": "Espléndido."
     },
     "main": {
         "translation" : "traducción"
+    },
+    "gallery": {
+        "nothing": "No hay nada que mostrar aquí..."
+    },
+    "backoffice": {
+        "login": "Acceso",
+        "username": "Nombre del usuario",
+        "password": "Contraseña",
+        "add": "Para agregar",
+        "title": "Título",
+        "description": "Descripción",
+        "add-photo": "Añadir una imagen"
+    },
+    "shop": {
+        "no-shop": "No hay Tienda en este momento."
+    },
+    "legals": {
+        "legals": "Mención legal",
+        "ower": "Dueño :",
+        "ower-name": "Elliot Mathey",
+        "ower-adress": "58 boulevard Aristide Briand",
+        "ower-zip": "94500 Champigny sur marne",
+        "ower-mail": "Elliotmathey8@gmail.com",
+        "host": "Anfitrión :",
+        "host-name": "Hostinger",
+        "host-adress": "61 Lordou Vironos Street,",
+        "host-zip": "6023 Larnaca, Chypre",
+        "host-link": "https://www.hostinger.fr/",
+        "publications": "Gestión de publicaciones :",
+        "publication-description": "El editor de este sitio web es Elliot Mathey. Es responsable de todas las publicaciones que se encuentran en este sitio. Los contenidos textuales de las páginas se encuentran por tanto bajo la protección de la propiedad intelectual de estos últimos.",
+        "link": "Enlaces externos",
+        "link-description": "Los enlaces externos presentes en este sitio no redirigen a sitios bajo la responsabilidad de Elliot Mathey, por lo que cualquier posible actividad ilegal presente en este último no puede ser seguida por un proceso contra el Sr. Mathey. Si un enlace apunta a contenido hiriente, ofensivo o ilegal, notifique al propietario del sitio lo antes posible para que pueda tomar las medidas necesarias para eliminar el enlace en cuestión.",
+        "data": "Usos de datos personales y cookies",
+        "data-description": "Para obtener una mejor referenciación, este Portafolio utiliza google Analytics. Esto implica que se recopilan cookies. Las cookies son archivos de texto almacenados en su computadora que contienen información sobre el uso que hace de los sitios web y su dirección IP. Estos datos recopilados por Google serán anonimizados, pero si aún se opone a la recopilación de cookies, puede desactivarlas en su navegador."
     }
 }

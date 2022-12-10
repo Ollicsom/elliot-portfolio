@@ -11,6 +11,7 @@
     font-family: "BestValentina";
     src: url("./assets/fonts/Best-Valentina.otf");
 }
+// @import '~bootstrap/dist/css/bootstrap.min.css';
 
 $colorPrimary: #9CAA9C;
 $colorPrimaryFade: #BDCFBD;
@@ -31,4 +32,8 @@ $paddingWidth: 4vw;
 
 body{
     background-color: $colorPrimaryLight;
+}
+
+.d-none{
+    display: none;
 }

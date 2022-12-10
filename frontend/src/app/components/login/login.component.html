@@ -1,0 +1,15 @@
+<div class="container">
+<h3>{{ "backoffice.login" | translate}}</h3>
+
+<form [formGroup]="loginForm">
+    <label for="username">{{ "backoffice.username" | translate }} :</label>
+    <input id="username" formControlName="username" placeholder="Thierry Henri">
+
+    <label for="password">{{ "backoffice.password" | translate }} :</label>
+    <input id="password" formControlName="password" placeholder="*******" type="password">
+
+    <button class="connexion" (click)="connect()">{{ "backoffice.login" | translate}}</button>
+</form>
+
+<img src="/assets/medias/veste-elliot2.png">
+</div>

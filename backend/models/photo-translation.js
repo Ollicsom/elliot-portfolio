@@ -11,7 +11,20 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   PhotoTranslation.init({
-    languageISO: DataTypes.STRING
+    LanguageISO: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+    },
+    PhotoId: {
+      type: DataTypes.NUMBER,
+      primaryKey: true,
+    },
+    title: {
+      type: DataTypes.STRING
+    },
+    description: {
+      type: DataTypes.STRING,
+    }
   }, {
     freezeTableName: true,
     sequelize,

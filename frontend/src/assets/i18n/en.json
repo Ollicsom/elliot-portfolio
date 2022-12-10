@@ -1,6 +1,7 @@
 {
     "shared": {
-        "here": "Here"},
+        "here": "Here"
+    },
     "menu": {
         "menu": "Menu",
         "home": "Home",
@@ -8,15 +9,47 @@
         "shop": "Shop"
     },
     "home": {
-        "photograph": "PHOTOGRAPH"
+        "photograph": "PHOTOGRAPHER",
+        "transition1": "Observer.",
+        "transition2": "Patient.",
+        "transition3": "Attentive.",
+        "transition4": "Wonderful."
     },
     "main": {
         "translation" : "translation"
     },
     "gallery": {
-        "nothing": "Nothing to seek here..."
+        "nothing": "Nothing to display here..."
     },
     "backoffice": {
-        "add": "Add"
+        "login": "Login",
+        "username": "Username",
+        "password": "Password",
+        "add": "Add",
+        "title": "Title",
+        "description": "Description",
+        "add-photo": "Add photo"
+    },
+    "shop": {
+        "no-shop": "There is no shop for the moment."
+    },
+    "legals": {
+        "legals": "Legal mentions",
+        "ower": "Owner :",
+        "ower-name": "Elliot Mathey",
+        "ower-adress": "58 boulevard Aristide Briand",
+        "ower-zip": "94500 Champigny sur marne",
+        "ower-mail": "Elliotmathey8@gmail.com",
+        "host": "Host :",
+        "host-name": "Hostinger",
+        "host-adress": "61 Lordou Vironos Street,",
+        "host-zip": "6023 Larnaca, Chypre",
+        "host-link": "https://www.hostinger.fr/",
+        "publications": "Publication management :",
+        "publication-description": "The editor of this website is Elliot Mathey. He is responsible for all of the publications found on this site. The textual contents of the pages are therefore under the protection of the intellectual property of the latter.",
+        "link": "External links",
+        "link-description": "The external links present on this site do not redirect to sites under the responsibility of Elliot Mathey, any potential illegal activities present on the latter cannot therefore be followed by a prosecution against Mr. Mathey. If a link points to hurtful, offensive or illegal content, please notify the site owner as soon as possible so that it can take the necessary steps to remove the link in question.",
+        "data": "Uses of personal data and cookies",
+        "data-description": "In order to obtain a better referencing, this Portfolio uses google Analytics. This implies that cookies are collected. Cookies are text files stored on your computer containing information about your use of websites and your IP address. This data collected by google will be anonymized but if you still oppose the collection of cookies, you can deactivate them on your browser."
     }
 }
